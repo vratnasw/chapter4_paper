@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2016/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: chapter4-MG-8-29-17.aux
+The style file: abbrvnat.bst
+Database file #1: references.bib
+Warning--I didn't find a database entry for "10.2307/j.ctt13x0t47"
+You've used 20 entries,
+            2773 wiz_defined-function locations,
+            737 strings with 8567 characters,
+and the built_in function-call counts, 9913 in all, are:
+= -- 869
+> -- 659
+< -- 9
++ -- 221
+- -- 201
+* -- 877
+:= -- 1566
+add.period$ -- 70
+call.type$ -- 20
+change.case$ -- 125
+chr.to.int$ -- 20
+cite$ -- 40
+duplicate$ -- 405
+empty$ -- 748
+format.name$ -- 235
+if$ -- 2031
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 22
+newline$ -- 118
+num.names$ -- 80
+pop$ -- 217
+preamble$ -- 1
+purify$ -- 107
+quote$ -- 0
+skip$ -- 325
+stack$ -- 0
+substring$ -- 349
+swap$ -- 20
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 210
+warning$ -- 0
+while$ -- 81
+width$ -- 0
+write$ -- 285
+(There was 1 warning)
