@@ -96,7 +96,7 @@ can potentially be used to better condition such forecasts.
   %It was suggested in \citep{ide2013proportionality} that background seismicity can be correlated with subduction zones that have experienced great earthquakes. %Additionally, there might be a correlation between the plate age and b-value \citep{nishikawa2014earthquake}. These results lead to relating the shear and normal stresses (broad-scale forces) at plate boundaries to background seismicity and b-values in addition to the geodetic seismic coupling.
 
 Regardless of whether broad-scale forces or varying shear zone properties are the ultimate cause for variations in seismic coupling, geodynamic models should be able to explain variations between the two end-members from the least coupled Marianas to coupled Chilean subduction zone. The Chilean subduction zone is among the most seismically active with many earthquakes above 8, including the largest ever recorded, the 1960 Valdivia earthquake with magnitude 9.5 magnitude \citep{kanamori1974},
-the largest ever recorded. On the other hand the Marianas subduction is among the least seismically coupled with no historic earthquake greater than 7.7 \mgnote{ need REF}. 
+the largest ever recorded. On the other hand the Marianas subduction is among the least seismically coupled with no historic earthquake greater than 7.7 \citep{doi:10.1130/G24402A.1}\mgnote{ need REF}\vrnote{done}. 
 Chile, overall is in a state of compression on the South American margin, while, the Marianas subduction zone is characterized by active back arc opening within the Marianas trench indicative of regional tension.
 
 
@@ -175,7 +175,7 @@ as they  provide a more physically intuitive description of plate coupling compa
 \label{eq:normal_shear}
 \end{equation}
 
-Unlike the rheological parameters, we do not infer the shear and normal stress in our optimization framework. Instead a Gaussian approximation to the normal stress in Eq.~\eqref{eq:normal_shear} is constructed. A natural question would be how well the shear and normal stresses are approximated by a Gaussian distribution. Locally, near the \textbf{MAP}, (the solution to the optimization problem) \mgnote{Define \textbf{MAP} here}, the conditional stresses and to an extent the marginal distributions are well approximated by a Gaussian distribution \citep{ratnaswamy2015adjoint}.  We define a measure of the stress from the underlying properties such as the strain rate exponent, yield stress and so forth, e.g. $\mm$ as, 
+Unlike the rheological parameters, we do not infer the shear and normal stress in our optimization framework. Instead a Gaussian approximation to the normal stress in Eq.~\eqref{eq:normal_shear} is constructed. A natural question would be how well the shear and normal stresses are approximated by a Gaussian distribution. Locally, near the \textbf{MAP}, (the solution to the optimization problem where the \textbf{MAP} point is the mean of the Gaussian approximation to $\ppi_{post}$)\mgnote{Define \textbf{MAP} here}, the conditional stresses and to an extent the marginal distributions are well approximated by a Gaussian distribution \citep{ratnaswamy2015adjoint}.  We define a measure of the stress from the underlying properties such as the strain rate exponent, yield stress and so forth, e.g. $\mm$ as, 
 \begin{equation}
 \textit \ssigma = f(\mm)
 \end{equation}
@@ -321,7 +321,7 @@ The values in ~\eqref{eq:gauss_transform} with superscript $w_i$ represent the  
 
 In our previous optimizations, we only used surface velocity data within areas of presumed rigid plate motions. 
 However, there are some areas in the mantle where there are estimates of the average effective viscosity including regions sampled by post-glacial rebound and post-seismic relaxation such as that associated with the 2012 Indian Ocean earthquake \citep{hu2016asthenosphere}.  
-These constraints from the 2012 Indian Ocean earthquake are potentially important as the loading was from a large intraplate oceanic earthquake within the lithosphere but constrained by onshore GPS. These provide bounds on the viscosity immediately below an oceanic plate from a transient observation. We can add these post-glacial and post-seismic constraints into our model in a 'generic' sense, that is areas under normal continental cratons and those below oceanic lithosphere just before the oceanic lithsphere starts to subduct. Estimates on the viscosity of the upper mantle below northern Europe from post glacial rebound are about $10^{21}$Pa$\cdot$s \mgnote{I can't resolve this reference can you add like the others?}\citep{10.2307/j.ctt13x0t47}. The constraints on the viscosity below North America are potentially more sensitive to both the upper mantle and the top of the lower mantle \citep{mitrovica1995constraints,simons1997localization}. For global models, these constraints would be added to the explicit region constrained by the transient observation.
+These constraints from the 2012 Indian Ocean earthquake are potentially important as the loading was from a large intraplate oceanic earthquake within the lithosphere but constrained by onshore GPS. These provide bounds on the viscosity immediately below an oceanic plate from a transient observation. We can add these post-glacial and post-seismic constraints into our model in a 'generic' sense, that is areas under normal continental cratons and those below oceanic lithosphere just before the oceanic lithsphere starts to subduct. Estimates on the viscosity of the upper mantle below northern Europe from post glacial rebound are about $10^{21}$Pa$\cdot$s \mgnote{I can't resolve this reference can you add like the others?}\citep{hu2016asthenosphere}. The constraints on the viscosity below North America are potentially more sensitive to both the upper mantle and the top of the lower mantle \citep{mitrovica1995constraints,simons1997localization}. For global models, these constraints would be added to the explicit region constrained by the transient observation.
 
 These estimates of the average effective viscosity are only available in regions where the mantle has undergone some response from deformation and are primarily available in the upper mantle.   There are a few ways to incorporate the effective viscosity, where $\overline{\eta}_i$ is the observational constraint for region $i$ and $\eta$ is the computed effective viscosity.
 \begin{equation}
@@ -428,8 +428,8 @@ However, choosing the prior distribution for various rheological parameters can 
   \addlegendentry{$\sigma^2$=0.1}
   \addplot [mark=none,very thick, red, samples=1000]{exp(-(x-3.0)^2/0.9)}; 
   \addlegendentry{$\sigma^2$=0.9}
-\node[font=\fontsize{18}{18}\sffamily] at (axis cs:1.5,1.0){a};
-\node[font=\fontsize{18}{18}\sffamily] at (axis cs:20.5,1.0){a};
+\node[font=\fontsize{18}{18}\sffamily] at (axis cs:1.5,1.0){A};
+
 
 \end{axis} 
 \end{tikzpicture}
@@ -449,7 +449,7 @@ However, choosing the prior distribution for various rheological parameters can 
  \addlegendentry{$\mu$=2.5, $\sigma^2 = 3/4$}
 \addplot [very thick, cyan] {unipdf(x,3,4)};
  \addlegendentry{$\mu$=2.5,  $\sigma^2 = 1/12$}
-\node[font=\fontsize{18}{18}\sffamily] at (axis cs:0.9,0.9){b};
+\node[font=\fontsize{18}{18}\sffamily] at (axis cs:0.9,0.9){B};
 \end{axis}
 \end{tikzpicture}
 
@@ -582,7 +582,7 @@ and with coefficient $\Gamma_i$ that was recovered in ~\eqref{eq:rheo}, $d_0$ is
   \label{table:parameters} % is used to refer this table in the text
 \end{table}
 
-An important caveat in these cross-section optimizations is that both the tomography model and plate motion data are not unique and therefore have implicit uncertainty embedded within the data. For example, there are multiple tomography models that can be used in the lower mantle, such as the W-wave model S40RTs\mgnote{REF} or the P-wave model \mgnote{give name of model}\citep{simmons2012llnl}), while plate motion data is highly dependent on the reference frame used such as hotspots, one fixed to a specific plate (Pacific for example), or the no-net-rotation(NNR) reference frame. In addition to the uncertainty of the reference frame, there is uncertainty in the Euler pole (latitude and longitude) of each plate along with the rotation (degrees/Ma) which can possibly influence the parameter estimation of plate couplings. \mgnote{Not sure how you are ariving at this conclusion.} Therefore, while it is possible that the magnitudes of the rheological parameters may be different for different tomography and plate motion models, the overall relative (mechanical) coupling of subduction zones should not vary from those obtained from seismic coupling (\citep{scholz2012seismic}).
+An important caveat in these cross-section optimizations is that both the tomography model and plate motion data are not unique and therefore have implicit uncertainty embedded within the data. For example, there are multiple tomography models that can be used in the lower mantle, such as the W-wave model S40RTs \citep{doi:10.1111/j.1365-246X.2010.04884.x}\mgnote{REF}\vrnote{done} or the P-wave model (LLNL-G3Dv3) \mgnote{give name of model}\vrnote{done}\citep{simmons2012llnl}), while plate motion data is highly dependent on the reference frame used such as hotspots, one fixed to a specific plate (Pacific for example), or the no-net-rotation(NNR) reference frame. In addition to the uncertainty of the reference frame, there is uncertainty in the Euler pole (latitude and longitude) of each plate along with the rotation (degrees/Ma) which can possibly influence the parameter estimation of plate couplings. \mgnote{Not sure how you are ariving at this conclusion.} Therefore, while it is possible that the magnitudes of the rheological parameters may be different for different tomography and plate motion models, the overall relative (mechanical) coupling of subduction zones should not vary from those obtained from seismic coupling (\citep{scholz2012seismic}).
 
 
 \mgnote{This is vague. The viscosity constraints need to be described in precise terms (e.g. magnetide of visocisty and geometry with reference citations}As presented earlier, the average effective viscosity data is an additional constraint that we will explore to determine the effect it has on the inference of the the rheological parameters. It is posited that since the effective viscosity is an observation from the mantle, then this data should better constraint on the global parameters such as the strain rate exponent, activation energy, and upper mantle prefactors. We will place the average effective viscosity constraint of $\overline{\eta}_i = 10^{19} Pa\cdot s$ under the South American plate, (as it is the only plate in our models with a substantial continental plate overriding a subduction zone), as well as underneath Japan with $overline{\eta}_i = 10^{19} Pa\cdot s$ \citep{hu2016asthenosphere} \vrnote{i need to find the exact dimensions used}.
@@ -615,21 +615,21 @@ For the inversion, guesses for the rheological parameters and coupling coefficie
 		Case & Subduction Zone & \textit{n} &$\sigma_y$&$\Gamma$ (SAM/RYU/IZU) $\cdot 10^{-5}$ &UM Prefactor &$E_a (kJ/mol)$&Visc. data   \\ [0.5ex] % inserts table
 		%heading
 		\hline                  % inserts single horizontal line
-	      	 1 &Complete& 3.042 & 148 & $100/0.82/0.77$ &  4700& no & no  \\
-	        2 &Complete& 3.046 & 146 & $67.3/0.773/0.798$ & no & no & no \\
-	        3 &Complete& 3.08 & 141.8 & $87.3/0.703/0.7448$ & no & yes & no \\
-	        4 &Complete& 3.0225 & 155 & $94.6/0.8423/0.889$ & no & & no (priors used) \\
-                5 &Sumatra& 3.048 & 143.1 & $63.9$ &  assumed& assumed& no \\
+	      	 1 &Complete& 3.042 & 148 & $100/0.82/0.77$ &  4700& \textbf{203.5} & no  \\
+	        2 &Complete& 3.046 & 146 & $67.3/0.773/0.798$ & \textbf{2000} & \textbf{203.5} & no \\
+	        3 &Complete& 3.08 & 141.8 & $87.3/0.703/0.7448$ & \textbf{2000} & \textbf{203.5} & yes \\
+	        4 &Complete& 3.0225 & 155 & $94.6/0.8423/0.889$ & \textbf{2000} & & priors used \\
+                5 &Sumatra& 3.048 & 143.1 & $63.9$ &  \textbf{2000}& \textbf{203.5}& no \\
 
-                 6 &Sumatra& 3.1 & 120 (assumed) & 44.1 & no & 207.2   &no\\
-                  7 &Sumatra& 3.0 (assumed) & 128.1 & 38.2 & no & 190.7   &no\\
-              8 &Tonga  & 3.0621 & 139.1 & 2.21& no & no &no  \\              
-               9 &Tonga  & 3.051 & 135.2 & 0.7& assumed & 186.2 &no  \\             
-              10 &Tonga  & 3.087 &  120 (assumed) & 0.71 &assumed &175.6  &no  \\              
-               11 &Tonga  & 3.0 (assumed) & 127.7 & 0.8 &assumed &198  &no  \\             
-               12 &Central America  & 3.0621 & 139.1 & 2.21& assumed & assumed &no  \\             
-                 13 &Central America  & 3.12 & 120 (assumed) & 6.3& assumed & 178.1 &no  \\         
-                 14 &Central America  & 3.0 (assumed) & 132.1 & 0.84& assumed& 207.2 &no  \\        
+                 6 &Sumatra& 3.1 & \textbf{120} & 44.1 & \textbf{2000} & 207.2   &no\\
+                  7 &Sumatra& \textbf{3.0} & 128.1 & 38.2 & \textbf{2000} & 190.7   &no\\
+              8 &Tonga  & 3.0621 & 139.1 & 2.21& \textbf{2000} & \textbf{203.5} &no  \\              
+               9 &Tonga  & 3.051 & 135.2 & 0.7& \textbf{2000} & 186.2 &no  \\             
+              10 &Tonga  & 3.087 &  \textbf{120} & 0.71 &\textbf{2000} &175.6  &no  \\              
+               11 &Tonga  & \textbf{3.0}  & 127.7 & 0.8 &\textbf{2000} &198  &no  \\             
+               12 &Central America  & 3.0621 & 139.1 & 2.21& \textbf{2000} & \textbf{203.5} &no  \\           
+                 13 &Central America  & 3.12 & \textbf{120} & 6.3& \textbf{2000} & 178.1 &no  \\       
+                 14 &Central America  & \textbf{3.0} & 132.1 & 0.84& \textbf{2000}& 207.2 &no  \\        
           
           
                 \hline %inserts single line
@@ -662,14 +662,14 @@ While we explored the influence of the global parameters and plate couplings wit
 \begin{table}[H]
 		\caption{\mgnote{make two collumns for $n$, one for guessed and one for inferred. These guess really are not being varied. Guesses should have more variation, like $n=2.5$ and $n=3.5$. Remember rock rheology studies suggest $n=3.5$ and your values are considerably smaller. Is this an artifact?}Sensitivity of initial guesses for Case 1} % title of Table
 		\centering  % used for centering table
-		\begin{tabular}{ c c c } % centered columns (2 columns)
+		\begin{tabular}{ c c c c } % centered columns (2 columns)
 		\hline \hline                        %inserts double horizontal lines
-		 \textit{n} &$\sigma_y$&$\Gamma $(SAM/RYU/IZU) $\cdot 10^{-5}$   \\ [0.5ex] % inserts table
+		 $n_{guess}$ &$n_{infer}$ &$\sigma_y$&$\Gamma $(SAM/RYU/IZU) $\cdot 10^{-5}$   \\ [0.5ex] % inserts table
 		%heading
 		\hline                  % inserts single horizontal line
-	         2.95/3.042 & 148 & $100/0.82/0.77$    \\
-	         2.98/3.046 & 146 & $67.3/0.773/0.798$  \\
-	        2.97/3.0225 & 141.8 & $87.3/0.703/0.7448$  \\             
+	         2.95 &3.042 & 148 & $100/0.82/0.77$    \\
+	         2.98 &3.046 & 146 & $67.3/0.773/0.798$  \\
+	        2.97 &3.0225 & 141.8 & $87.3/0.703/0.7448$  \\             
                 \hline %inserts single line
 		\end{tabular}
 		\label{table:initial_guess} % is used to refer this table in the text
@@ -684,17 +684,17 @@ effective viscosity below South America and plate motions that the strain rate e
 %\hspace{-0.2cm}\subfigure[]{
 %\includegraphics[height=65mm,width=128mm]{visc_no_stress.jpg}%{mesh.pdf}
 %}
-\hspace{-0.85cm}\subfigure[]{
-\includegraphics[height=35mm,width=68mm]{data_vel.pdf}%{mesh.pdf}
+\hspace{-0.4cm}\subfigure{
+\includegraphics[height=35mm,width=58mm]{fig3a.pdf}%{mesh.pdf}
 }
-\hspace{-0.2cm}\subfigure[]{
-\includegraphics[height=35mm,width=58mm]{paper_gamma2.pdf}%{mesh.pdf}
+\hspace{-0.2cm}\subfigure{
+\includegraphics[height=35mm,width=58mm]{fig3b.pdf}%{mesh.pdf}
 }
-\hspace{-0.2cm}\subfigure[]{
-\includegraphics[height=35mm,width=58mm]{paper_strain2.pdf}%{mesh.pdf}
+\hspace{-0.4cm}\subfigure{
+\includegraphics[height=35mm,width=58mm]{fig3c.pdf}%{mesh.pdf}
 }
-\hspace{-0.2cm}\subfigure[]{
-\includegraphics[height=35mm,width=58mm]{paper_yield2.pdf}%{mesh.pdf}
+\hspace{-0.2cm}\subfigure{
+\includegraphics[height=35mm,width=58mm]{fig3d.pdf}%{mesh.pdf}
 }
 %\hspace{-0.2cm}\subfigure[]{
 %\includegraphics[height=35mm,width=58mm]{um_chap4.pdf}%{mesh.pdf}
@@ -714,17 +714,17 @@ While the larger cross-section (Cases 1-4) has the advantage of having subductio
 %\hspace{-0.2cm}\subfigure[]{
 %\includegraphics[height=65mm,width=128mm]{visc_no_stress.jpg}%{mesh.pdf}
 %}
-\hspace{-0.85cm}\subfigure[]{
-\includegraphics[height=35mm,width=68mm]{paper_gamma1.pdf}%{mesh.pdf}
+\hspace{-0.4cm}\subfigure{
+\includegraphics[height=35mm,width=58mm]{fig4a.pdf}%{mesh.pdf}
 }
-\hspace{-0.2cm}\subfigure[]{
-\includegraphics[height=35mm,width=58mm]{paper_strain1.pdf}%{mesh.pdf}
+\hspace{-0.1cm}\subfigure{
+\includegraphics[height=35mm,width=58mm]{fig4b.pdf}%{mesh.pdf}
 }
-\hspace{-0.2cm}\subfigure[]{
-\includegraphics[height=35mm,width=58mm]{paper_yield1.pdf}%{mesh.pdf}
+\hspace{-0.2cm}\subfigure{
+\includegraphics[height=35mm,width=58mm]{fig4c.pdf}%{mesh.pdf}
 }
-\hspace{-0.2cm}\subfigure[]{
-\includegraphics[height=35mm,width=58mm]{paper_activ1.pdf}%{mesh.pdf}
+\hspace{-0.2cm}\subfigure{
+\includegraphics[height=35mm,width=58mm]{fig4d.pdf}%{mesh.pdf}
 }
 %\hspace{-0.2cm}\subfigure[]{
 %\includegraphics[height=35mm,width=58mm]{um_chap4.pdf}%{mesh.pdf}
@@ -754,23 +754,23 @@ An important consequence of these conditional distributions are the trade-offs b
 
 \begin{figure}[H]
 \centering
-\hspace{-0.85cm}\subfigure[]{
-\includegraphics[height=35mm,width=52mm]{gauss_weak_strain.pdf}%{mesh.pdf}
+\hspace{-0.85cm}\subfigure{
+\includegraphics[height=35mm,width=52mm]{fig5a.pdf}%{mesh.pdf}
 }
-\hspace{-0.1cm}\subfigure[]{
-\includegraphics[height=35mm,width=52mm]{gauss_weak_yield.pdf}%{mesh.pdf}
+\hspace{-0.1cm}\subfigure{
+\includegraphics[height=35mm,width=52mm]{fig5b.pdf}%{mesh.pdf}
 }
-\hspace{-0.1cm}\subfigure[]{
-\includegraphics[height=35mm,width=52mm]{paper_cond4.pdf}%{mesh.pdf}
+\hspace{-0.1cm}\subfigure{
+\includegraphics[height=35mm,width=52mm]{fig5c.pdf}%{mesh.pdf}
 }
-\subfigure[]{
-\hspace{-0.8cm}\includegraphics[height=35mm,width=52mm]{paper_cond1.pdf}%{mesh.pdf}
+\subfigure{
+\hspace{-0.8cm}\includegraphics[height=35mm,width=52mm]{fig5d.pdf}%{mesh.pdf}
 }
-\subfigure[]{
-\includegraphics[height=35mm,width=52mm]{paper_cond2.pdf}%{mesh.pdf}
+\subfigure{
+\includegraphics[height=35mm,width=52mm]{fig5e.pdf}%{mesh.pdf}
 }
-\hspace{0.1cm}\subfigure[]{
-\includegraphics[height=35mm,width=52mm]{paper_cond3.pdf}%{mesh.pdf}
+\hspace{0.1cm}\subfigure{
+\includegraphics[height=35mm,width=52mm]{fig5f.pdf}%{mesh.pdf}
 }
 %\hspace{-0.2cm}\subfigure[]{
 %\includegraphics[height=35mm,width=58mm]{normal_comparison_prior2.pdf}%{mesh.pdf}
@@ -817,16 +817,16 @@ One of the key analyses that was developed in this chapter was the characterizat
 \begin{figure}[H]
 \centering
 \hspace{-0.2cm}\subfigure[]{
-\includegraphics[height=35mm,width=58mm]{normal_comparison_prior2.pdf}%{mesh.pdf}
+\includegraphics[height=35mm,width=58mm]{fig6a.pdf}%{mesh.pdf}
 }
 \hspace{-0.2cm}\subfigure[]{
-\includegraphics[height=35mm,width=58mm]{shear_comparison_prior.pdf}%{mesh.pdf}
+\includegraphics[height=35mm,width=58mm]{fig6b.pdf}%{mesh.pdf}
 }
 \hspace{-0.2cm}\subfigure[normal stresses]{
-\includegraphics[height=35mm,width=58mm]{normal_tong_sum.pdf}%{mesh.pdf}
+\includegraphics[height=35mm,width=58mm]{fig6c.pdf}%{mesh.pdf}
 }
 \hspace{-0.2cm}\subfigure[shear stresses]{
-\includegraphics[height=35mm,width=58mm]{shear_tong_sum.pdf}%{mesh.pdf}
+\includegraphics[height=35mm,width=58mm]{fig6d.pdf}%{mesh.pdf}
 }
 \caption{(a)Normal stress comparison (d)Shear Stress Comparison for South America, Ryukyu and Izu-Bonin (c)Normal stress comparison (d)Shear Stress Comparison for Tonga and South America}
 \label{fig:shear_smaller}
@@ -856,7 +856,8 @@ While the conditional distributions are important to gaining a better understand
 
 Ultimately, we have shown that using the adjoint formulation to efficiently compute gradients for a realistic nonlinear mantle flow model can provide estimates of the rheological parameters and their uncertainties. Furthermore, we are able to incorporate average effective viscosity data for available regions by extending our adjoint formulation. Using the adjoint and an approximation of the Hessian for the covariance matrix, we are able to extend our understanding of the multiple trade-offs of the inferred rheolgical parameters for the 2D cross-sectional models presented. These methods are readily applicable to global models that can capture the complexity of the flow patterns in the mantle, which in turn can aid in the understanding of the relationship between great earthquakes and where they occur from a plate tectonics point of view.
 
-
+\appendix
+\section{Derived Covariance Estimates}
 %\section*{Conclusion}
 
 \bibliography{references}
