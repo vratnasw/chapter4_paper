@@ -681,9 +681,10 @@ effective viscosity below South America and plate motions that the strain rate e
   % The first case study is shown below in Fig.\ref{fig:inverse1}
 \begin{figure}[H]
 \centering
-%\hspace{-0.2cm}\subfigure[]{
-%\includegraphics[height=65mm,width=128mm]{visc_no_stress.jpg}%{mesh.pdf}
-%}
+
+\hspace{-0.2cm}\subfigure{
+\includegraphics[height=65mm,width=128mm]{vish_contour.pdf}%{mesh.pdf}
+}
 \hspace{-0.4cm}\subfigure{
 \includegraphics[height=35mm,width=58mm]{fig3a.pdf}%{mesh.pdf}
 }
@@ -699,12 +700,36 @@ effective viscosity below South America and plate motions that the strain rate e
 %\hspace{-0.2cm}\subfigure[]{
 %\includegraphics[height=35mm,width=58mm]{um_chap4.pdf}%{mesh.pdf}
 %}
-\caption{\mgnote{Here are some general comments about these kinds of Figures. Please carve these comments out and take them very seriously. First. The "a", "b", etc., should be inside the Figure. Using LaTeX to this creates messy Figures that are hard to work with. This is easy in Adobe Illustrator. Having a hanging block by shifting from two collumns to one collumn is a waste of space and awkard looking. Also, learn how to use MatLab to makin better sub-figures if that is what you are going to do. You only have 'major labled tick marks'; you should youse fewer labels and more sub-tick marks.}(a) i\mgnote{ panels b-e are a waste of space and not informative for the reader because you are only showing the convergence of three models. I would ponetially show the convergence of 4 models. 1. The model you have shown. 2. a model with a differnt IC guess. 3. What happends when you use Vel+effective viscosity constraint (new to this paper). 4. What happens hen you use Vel+priors. Does this speed up convergence? Given different convergence speeds. }Surface velocity comparison between data and different iterations (Case 1).(b)Plate boundary weakfactor iteration (South America (blue lines), Izu-Bonin (red lines), Ryukyu (black lines), with \textit{circles} being velocity data only, \textit{diamonds} being velocity and effective viscosity data and \textit{asterisks} being velocity and priors  (c) strain rate exponent iteration \textit{blue circle} being plate velocities, \textit{blue diamonds} being a different initial guess, \textit{black circle} being velocity and effective viscosity data and \textit{red circle} being velocity and priors (d) yield stress iteration with \textit{blue circle} being plate velocities, \textit{black circle} being velocity and effective viscosity data and \textit{red circle} being velocity and priors .}
+
+\caption{\mgnote{Here are some general comments about these kinds of Figures. Please carve these comments out and take them very seriously. First. The "a", "b", etc., should be inside the Figure. Using LaTeX to this creates messy Figures that are hard to work with. This is easy in Adobe Illustrator. Having a hanging block by shifting from two collumns to one collumn is a waste of space and awkard looking. Also, learn how to use MatLab to makin better sub-figures if that is what you are going to do. You only have 'major labled tick marks'; you should youse fewer labels and more sub-tick marks.}(a)Effective viscosity for Case 1(b) i\mgnote{ panels b-e are a waste of space and not informative for the reader because you are only showing the convergence of three models. I would ponetially show the convergence of 4 models. 1. The model you have shown. 2. a model with a differnt IC guess. 3. What happends when you use Vel+effective viscosity constraint (new to this paper). 4. What happens hen you use Vel+priors. Does this speed up convergence? Given different convergence speeds. }Surface velocity comparison between data and different iterations (Case 1).(c)Plate boundary weakfactor iteration (South America (blue lines), Izu-Bonin (red lines), Ryukyu (black lines), with \textit{circles} being velocity data only, \textit{diamonds} being velocity and effective viscosity data and \textit{asterisks} being velocity and priors  (d) strain rate exponent iteration \textit{blue circle} being plate velocities, \textit{blue diamonds} being a different initial guess, \textit{black circle} being velocity and effective viscosity data and \textit{red circle} being velocity and priors (e) yield stress iteration with \textit{blue circle} being plate velocities, \textit{black circle} being velocity and effective viscosity data and \textit{red circle} being velocity and priors .}
 \label{fig:inverse1}
 \end{figure}
 
 While using additional data may reduce the uncertainty of the inferred parameters, the inclusion of prior knowledge would certainly aid in reducing the variance of the inferred parameters. Using knowledge from experimental data \citep{korenaga2008new}, we include prior knowledge as Gaussian distributions with mean values of $\overline{n}=2.95$,$\overline{\sigma}_y = 120 MPa, \overline{\Gamma}=10^{-5}$, while using variances that do not place strong constraints on the inferred parameters (Case 4). 
  With prior knowledge, we find that the order of plate couplings corresponds to what was found from cases 1-3. Furthermore, the recovered strain rate exponent is slightly smaller (3.0225) , while the yield stress is slightly larger (155 MPa), than Cases 1-3. It is important to note that the inferred parameters obtained from using priors are similar to values inferred when priors are not used, suggesting that the underlying physics strongly prefers certain values of the global rheological parameters and a particular relative ordering of plate couplings.
+
+ % The first case study is shown below in Fig.\ref{fig:inverse1}
+\begin{figure}[H]
+\centering
+
+\hspace{-1.0cm}\subfigure{
+\includegraphics[height=45mm,width=68mm]{sumatra.pdf}%{mesh.pdf}
+}
+\hspace{0.1cm}\subfigure{
+\includegraphics[height=45mm,width=45mm]{sumatra_zoom.pdf}%{mesh.pdf}
+}
+\hspace{0.2cm}\subfigure{
+\includegraphics[height=55mm,width=58mm]{middle.pdf}%{mesh.pdf}
+}
+\hspace{0.2cm}\subfigure{
+\includegraphics[height=55mm,width=58mm]{middle_zoom.pdf}%{mesh.pdf}
+}
+%\hspace{-0.2cm}\subfigure[]{
+%\includegraphics[height=35mm,width=58mm]{um_chap4.pdf}%{mesh.pdf}
+%}
+\caption{Effective viscosity for (a)Sumatra (b)Zoom in of Sumatra subduction zone (c)Central America (b)Zoom in of Central America subduction zone.}
+\label{fig:visc_smaller}
+\end{figure}
 
 While the larger cross-section (Cases 1-4) has the advantage of having subduction zones of varying seismogenic coupling, it is important to compare the parameter inferences from the larger cross-section to smaller cross-sections to determine if the global parameters would be of similar magnitude and how. The Sumatra subduction zone is of particular interest as it is thought to be one of the more seismically coupled subduction zones. Therefore, we repeat similar case studies for the Sumatra subduction zone.
 
