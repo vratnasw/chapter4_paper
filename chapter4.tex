@@ -476,7 +476,7 @@ with a mean and variance of
 \end{align}
 
 The uniform distribution in Fig.~\ref{fig:prior_ex}b has the same mean; however the variance is different. Compared to a normal distribution, the variance for the uniform distribution is determined by the range of likely values, each of which has the same probability.
-
+	
 
  For a prior that is described by a normal distribution the mean $\mu$ and covariance, $\mathcal{C}$ is needed.
 \begin{equation}
@@ -648,7 +648,7 @@ For the inversion, guesses for the rheological parameters and coupling coefficie
 Since we do not know the true values of the rheological and coupling 
 paramters apriori, incontrast to our entirerly synthetic study \mgnote{add ref}, it is essential that we demonstrate the stability of te inversions and
 the degree to which they are sensitive to guessed values, the number of
-inferred parameters, the conditioning of those parameters, and
+inferred parameters, the conditioning of those parameters, and 
 finally the addition of effectivty viscosity constraints.
 
 For the WEP cross-section, we ran a suite of inversions where we varied the parameters to be inferred as given in Table \ref{table:inversions}.  We first inferred the plate couplings, strain rate exponent, yield stress and upper mantle prefactor as shown in Case 1 and Fig.\ref{fig:inverse1} so as to see if there are variations in mechanical coupling as seen from seismic coupling. The effective viscosity in Case 1 (Fig.\ref{fig:inverse1}a) shows a weak upper mantle in addition to dynamic weakening in hinge zones.  In Case 1, we were able to infer the plate couplings within 5 adjoint iterations (Fig.\ref{fig:inverse1}b), and furthermore find that the inferred couplings for South America, Izu-Bonin and Ryukyu are different Fig.\ref{fig:inverse1}b (filled circles).The inferred strain rate exponent is slightly greater than 3.0 (initial guess), though still within the bounds provided by experiments, while the inferred yield stress is 148 MPa. An important question about Case 1 is if these values would change if we chose a different initial guess for one of the inferred parameters. Using different initial guesses for the strain rate exponent, as shown in Table \ref{table:initial_guess}, we find that we are able to recover similar values for the plate couplings, strain rate exponent and yield stress. Furthermore, we find a similar trend that the plate couplings for the three subduction zones are different, while they still retain the the same relative ordering of plate coupling.   
@@ -713,16 +713,11 @@ While using additional data may reduce the uncertainty of the inferred parameter
 \centering
 
 \hspace{-1.0cm}\subfigure{
-\includegraphics[height=45mm,width=68mm]{sumatra.pdf}%{mesh.pdf}
+\includegraphics[scale =0.5]{sumatra.pdf}%{mesh.pdf}
 }
-\hspace{0.1cm}\subfigure{
-\includegraphics[height=45mm,width=45mm]{sumatra_zoom.pdf}%{mesh.pdf}
-}
+
 \hspace{0.2cm}\subfigure{
-\includegraphics[height=55mm,width=58mm]{middle.pdf}%{mesh.pdf}
-}
-\hspace{0.2cm}\subfigure{
-\includegraphics[height=55mm,width=58mm]{middle_zoom.pdf}%{mesh.pdf}
+\includegraphics[scale=0.6]{middle.pdf}%{mesh.pdf}
 }
 %\hspace{-0.2cm}\subfigure[]{
 %\includegraphics[height=35mm,width=58mm]{um_chap4.pdf}%{mesh.pdf}
@@ -834,8 +829,30 @@ While the correlations between the rheological parameters is important, using pr
 %\label{fig:subd_comp}
 %\end{figure}
 
-In Fig.\ref{fig:distrib}d-e, we find similar trade-offs between the plate coupling and strain rate exponent, that is an increase in plate coupling (an increase in viscosity within the fault zone) would engender an increase in the strain rate exponent (promotes more shear thinning) so as to increase plate motion. Similarly, as the plate coupling increase the yield stress decreases (promoting more dynamic weakening) so that plates can overcome the resistance from an increase in plate coupling. Furthermore, the same trade-off (positive correlation) between the strain rate exponent and yield stress is found for the Sumatra, Tonga and Central America as shown in Fig.\ref{fig:distrib}f, which seems to suggest that this trade-off between yield stress and strain rate exponent is consistent when it comes to constraining plate motions. Furthermore, there is a similar partitioning of plate coupling in Fig.\ref{fig:distrib}a, b, suggesting that Sumatra will be more coupled compared to Tonga and Central America regardless of the strain rate exponent and yield stress.
+In Fig.\ref{fig:distrib}d-e, we find similar trade-offs between the plate coupling and strain rate exponent, that is an increase in plate coupling (an increase in viscosity within the fault zone) would engender an increase in the strain rate exponent (promotes more shear thinning) so as to increase plate motion. Similarly, as the plate coupling increase the yield stress decreases (promoting more dynamic weakening) so that plates can overcome the resistance from an increase in plate coupling. Furthermore, the same trade-off (positive correlation) between the strain rate exponent and yield stress is found for the Sumatra, Tonga and Central America as shown in Fig.\ref{fig:distrib}f, which seems to suggest that this trade-off between yield stress and strain rate exponent is consistent when it comes to constraining plate motions. 
 
+We can visually see these trade-offs in the conditional distributions from the effective viscosity in Fig.\ref{fig:visc_smaller} for Sumatra and Central America. We see that there is sufficient strain rate weakening in the upper mantle for each model for both Sumatra and Central America, however, the amount of yielding from dynamic weakening changes in the hinge zone and overriding plate between Sumatra and Central America. We find in Fig.\ref{fig:visc_smaller} that there is a larger plate coupling for Sumatra relative to Central America, which  yields more dynamic weakening in the overriding plate (more strain). When comparing the effective viscosity of the slabs for Sumatra and Central America, we find that the final viscosity structure suggests that the Central America slab is stronger due to less dynamic weakening and more decoupling between the overriding and subducting plate. 
+
+
+
+\begin{figure}[H]
+\centering
+
+\hspace{-1.0cm}\subfigure{
+\includegraphics[scale =0.5]{contour_theory.pdf}%{mesh.pdf}
+}
+
+\hspace{0.2cm}\subfigure{
+\includegraphics[scale=0.5]{contour_theory2.pdf}%{mesh.pdf}
+}
+%\hspace{-0.2cm}\subfigure[]{
+%\includegraphics[height=35mm,width=58mm]{um_chap4.pdf}%{mesh.pdf}
+%}
+\caption{Effective viscosity for a forward model for Middle America (a)Coupled ($\Gamma = 4.0 \cdot 10^{-3}, \sigma_y = 160 MPa, n = 3.08$) (b)Zoom in of Middle America and increase in strain rate exponent (c) ($\Gamma = 1.0 \cdot 10^{-5}, \sigma_y = 160 MPa, n = 3.08$)(b)Zoom in of Central America subduction zone.}
+\label{fig:middle_physics}
+\end{figure}
+
+To further elucidate these trade-offs, we consider a thought-experiment where we consider two forward models of Middle America in (Fig.\ref{fig:middle_physics}a). In this example, we consider a coupled Central America subduction zone in Fig.\ref{fig:middle_physics}a, and see  that for a larger coupling the slab would then slow down and the amount of weakening around the slab decreases, resulting in an increase in viscosity around the slab. However, when the coupling is decreased ($\Gamma=4\cdot 10^{-5}$), the amount of strain strain rate weakening increases as does the velocity of the plate. This interplay between the rheological parameters is important as it demonstrates a strong interaction between the global rheological parameters (yield stress and strain rate exponent) and local coupling parameter.
 
 One of the key analyses that was developed in this chapter was the characterization of the uncertainty of the stresses (shear and normal) of each plate boundary that is built upon a Gaussian approximation around the \textbf{MAP} point for each inversion. We apply this approach to our models as shown in Fig.\ref{fig:shear_smaller}a,b, where we compare the mean normal and shear stresses of each plate boundary and find that there is a similar pattern of the partitioning between the least coupled subduction zones of Ryukyu and Izu-Bonin to the more coupled subduction zone of South America. Similar to Fig.\ref{fig:distrib}, the same pattern of a more coupled South America plate boundary appears (both normal and shear stresses), regardless of the global parameter. However, we note that the mean of the computed normal stress is lower than the shear stresses, which is certainly not expected.
 
@@ -883,6 +900,96 @@ Ultimately, we have shown that using the adjoint formulation to efficiently comp
 
 \appendix
 \section{Derived Covariance Estimates}
+We have previously set models in how to estimate quantities that are are inferred such as the stresses. In this section, we will thoroughly discuss how to apply this Gaussian approximation to various quantities of interest. Mapping of covariance matrices from one space to another requires  a transformation,i.e. using the Jacobian. As an example, we will look at transforming a Gaussian distribution for the inferred yield stress and strain rate exponent, that is $\ppi(\mm):= \mathcal{N}([n,\ssigma_y],\mathcal C) \rightarrow \ssigma(\gamma \mm)$, where we look at the scaled space between the parameters. To determine the mapping of the covariance we make use of,
+\underline{Case 1: 1D Normal}
+\begin{equation}
+\frac{\partial \ssigma}{\partial \mm} = \gamma
+\end{equation}
+leading to
+\begin{equation}
+\ppi_2 = \mathcal N(\mu,\gamma^2\sigma)
+\end{equation}
+\underline{Case 2: 2D Normal}
+We consider the case when we apply a stretch factor in the form of $\gamma = [\gamma_1, \gamma_2]$, that is $\mm = [\mm_1, \mm_2]$. Therefore $\ssigma = [\gamma_1 \mm_1, \gamma_2 \mm_2]$. The follwoing now holds
+\begin{equation}
+\frac{\partial \ssigma}{\partial \mm} = 
+\begin{bmatrix}
+\gamma_1 & 0 \\
+0 & \gamma_2 \\
+\end{bmatrix}
+\end{equation}
+leading to
+\begin{equation}
+\mathcal C = 
+\begin{bmatrix}
+\gamma_1^2 a & \gamma_1 \gamma_2 b \\
+\gamma_1 \gamma_2 b & \gamma_2^2 c \\
+\end{bmatrix}
+\end{equation}
+
+\begin{equation}
+\ppi_2 = \mathcal N(\mu,\gamma^2\sigma)
+\end{equation}
+An important point is to construct the covariance matrix for the relationship between the stress and inferred parameters (strain rate exponent, yield stress). To do so, we form the vector $\ssigma_{a}$ such that  $\ssigma_a = (\ssigma, n,\sigma_y..)^T$. Doing so, we find the Jacobian is
+\begin{equation}
+\frac{\partial \ssigma_a}{\partial \mm} = \frac{\partial [\ssigma, n, \sigma_y...]^T}{\partial \mm}
+\end{equation}
+which results in 
+\begin{equation}
+\mathcal C = 
+\begin{bmatrix}
+\frac{\partial \ssigma}{\partial n} & \frac{\partial \ssigma_{a}}{\partial \sigma_y} \\
+\frac{\partial n}{\partial n}& \frac{\partial n}{\partial \sigma_y} \\
+\frac{\partial \sigma_y}{\partial n}& \frac{\partial \sigma_y}{\partial \sigma_y} \\
+\end{bmatrix}
+\end{equation}
+which leads to 
+\begin{equation}
+\mathcal C = 
+\begin{bmatrix}
+\frac{\partial \ssigma}{\partial n} & \frac{\partial \ssigma_{a}}{\partial \sigma_y} \\
+1 & 0\\
+0 & 1 \\
+\end{bmatrix}
+\end{equation}
+
+\begin{figure}[H]
+\centering
+\hspace{-1.2cm}\subfigure{
+\begin{tikzpicture} 
+\begin{axis}[ xlabel=strain rate exponent,xmin=1.0, xmax=5.0 ] % invoke external gnuplot as % calculator: 
+  \addplot [mark=none,very thick, blue, samples=1000]{exp(-(x-3.0)^2/0.1)}; 
+  \addlegendentry{$\sigma^2$=0.1}
+  \addplot [mark=none,very thick, red, samples=1000]{exp(-(x-3.0)^2/0.9)}; 
+  \addlegendentry{$\sigma^2$=0.9}
+\node[font=\fontsize{18}{18}\sffamily] at (axis cs:1.5,1.0){A};
+
+
+\end{axis} 
+\end{tikzpicture}
+}
+\end{figure}
+\subsection*{Uncertainty estimates for Effective viscosity}
+While we have developed this machinery for normal and shear stresses, we can extend it to the effective viscosity in a region. The average effective effective viscosity we are interested in is,
+\begin{equation}
+ \eta_{avg} = \exp(\int_{\Omega_i} \log \eta d\Omega_i)
+ \end{equation}
+The jacobian is then,
+\begin{equation}
+\frac{\partial \eta_{avg}}{\partial \mm} = \eta_{avg}\int_{\Omega_i} \frac{\eta){,i}}{\eta}
+\end{equation}
+The transformation then yields 
+\begin{equation}
+\mathcal C = 
+\begin{bmatrix}
+\frac{\partial \ssigma}{\partial n} & \dots & \frac{\partial \ssigma_{a}}{\partial \sigma_y} \\
+1 &  0 & \dots & 0\\
+0 & 1 & \dots & 0 \\
+\vdots & \vdots & \ddots  & 0 \\
+0 &0 & \dots & 1 
+
+\end{bmatrix}
+\end{equation}
 %\section*{Conclusion}
 
 \bibliography{references}
