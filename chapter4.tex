@@ -117,6 +117,10 @@ Augmenting surface velocities, we now incorporate constraints on the average vis
 The viscosity reduction for a shear zone representing the megathrust between plates has been inferred from the adjoint-based optimization, but not the state of stress. We show that such stresses can be estimated from an additional adjoint solve.
 We determine the trade-offs between the calculated stresses and inferred rheological parameters. 
 
+
+While older models have used simpler physics such as without yielding and shear thinning, they fail to capture the underlying dynamic weakening that occurs in the hinge zone, as slabs begin to bend. That issue of dynamic weakening is critical as it can later give incorrect estimates of the state of stress is in the hinge zone. Furthermore, solely relying on a temperature dependent rheology will make the slabs too strong and may not allow for an accurate representation of the variations in plate couplings. 
+
+
 In this chapter, we will explore the incorporation of average effective viscosities and estimation of stress uncertainty in fault zones. While inferring plate boundary strength factors \citep{ratnaswamy2015adjoint} can lead to a better understanding of which plate boundaries are more mechanically coupled, \mgnote{This needs to be stated much more precisely. I don't think that it is their non-dimensionalization which is at issue. I beleive that it is a difference between an intrinsice versus extrinsic properties. I think stress is extrinsice while rheological parameters are intrinsice. It will be interesting to see what Georg thinks about this.} such variables are non-dimensional and so here we not only estimate the magnitude of  stresses but also their uncertainties. We will derive expressions for the gradients of inferred parameters using average effective viscosity and expressions for the covariance matrices of the average normal and shear stresses. We then apply these methods to 2D cross-sectional slices with observed plate motions and viscosity constraints and thermal structures and fault zone geometries constrained by a variety of other (but primarily seismic) data.
  
 \section{Forward Model}
