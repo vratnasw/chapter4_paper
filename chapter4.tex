@@ -73,7 +73,7 @@
 
 \date{}
 
-\title{Chapter 4: Simultaneous inference of plate boundary properties and mantle viscosity with an adjoint optimization: Large scale two-dimensional models}
+\title{Chapter 4: Simultaneous inference of plate boundary properties and mantle viscosity with an adjoint optimization: Large-scale two-dimensional models}
 
 
 \begin{document}
@@ -391,7 +391,7 @@ Making use of this constraint, we then formulate the misfit as,
 \label{eq:cost}
 \end{equation}
 Taking derivatives of the cost function in ~\eqref{eq:cost} with respect to the forward variables $(\uu,p)$ and employing the divergence theorem as in ~\citep{ratnaswamy2015adjoint}, we arrive at
-the adjoint system
+the adjoint system \mgnote{What is $\Psi$ ?} \vrnote{done}
 \begin{equation}
   \label{eq:adjoint}
   \begin{split}
@@ -399,7 +399,7 @@ the adjoint system
     \nabla \cdot \hat \ssigma_\uu&=-\nabla \cdot \Psi   \qquad \text{on } \Omega, \\
   \end{split}
 \end{equation}
-with boundary conditions
+where $\Psi = (1-\frac{1-n}{n}\strain(\uu):\strain(\uu))\mathbb{I} + \frac{1-n}{n} \frac{\strain(\uu)\otimes \strain(\uu)}{\strain(\uu):\strain(\uu)}$, and boundary conditions
 \begin{align*}
   \vv\cdot \textbf{n}&=0 \quad \text{on} \, \partial \Omega, \\
   \boldmath{\mathrm{T}}(\hat\ssigma_\uu \textbf{n})
@@ -410,7 +410,7 @@ with boundary conditions
   \end{cases}
   \label{eq:adjoint}
 \end{align*}
-where our primary constraint is the observed plate velocities, $\uu_{\text{obs}}$, optimized against the forward prediction of the velocity, $\uu$. In addition, $\hat\ssigma_\uu = \hat\ssigma_\uu(\vv,q)$ is the adjoint stress, where $\vv$ is adjoint velocity field and $q$ is the adjoint pressure,
+where $T$ is the tangential operator in which our primary constraint is the observed plate velocities, $\uu_{\text{obs}}$, optimized against the forward prediction of the velocity, $\uu$. In addition, $\hat\ssigma_\uu = \hat\ssigma_\uu(\vv,q)$ is the adjoint stress, where $\vv$ is adjoint velocity field and $q$ is the adjoint pressure,
 \begin{equation}\label{eq:sigma_hat}
 \hat\ssigma_\uu  = 2 \Big(\eta(\IIinv,\Gamma, n,
 \sigma_y)\mathbb{I}+\frac{1}{2} \eta_{,\IIinv} [\strain(\uu)\otimes
@@ -437,6 +437,10 @@ The additional term on the right hand side of ~\eqref{eq:viscavg_grad} arises fr
 
 
 \subsection*{Priors}
+
+Using prior knowledge can further reduce the variance for the inferred rheological parameters. Using prior knowledge from laboratory experiments \citep{korenaga2008new}, we are able to reduce the variance of the plate couplings and global parameters in Case 4 as shown in Fig.\ref{fig:distrib}c, while retaining the same trade-offs between each rheological parameters, which is expected as we only reduced the acceptable range of the inferred parameters. While the conditional distributions for the larger cross-section show that there is indeed trade-offs in plate couplings and global parameters, is is unknown if these trade-offs exist for all subduction zones. To this end, we compared the conditional distributions for Sumatra, Tonga and Central America (Fig.\ref{fig:distrib}d,e and f). 
+
+
  We have pre-existing knowledge on the rheological parameters controlling the deformation of mantle materials at high temperatures from laboratory experiments\cite{ranalli1995rheology}, 
 although those are generally performed at substantially larger strain rates than the values of $10^{-15}s^{-1}$, typical of mantle flow \citep{korenaga2008new}. Nevertheless,  those estimates can be  incorporated as prior knowledge into the optimization using Bayes Theorem (Eq.~\eqref{eq:bayes}), recalling that $\ppi_{prior}$ is the distribution that represents prior knowledge of the parameters. However, the parameters from laboratory experiments vary depending on what type of conditions are present such as the strain rate exponent depending whether wet or dry olivine is present. Therefore, the variance (uncertainty) in the prior distribution should reflect the lack of certainty of the range of values a rheological parameters should be.
 
@@ -534,7 +538,7 @@ The lithosphere and upper mantle models and the upper and lower mantle were blen
 We have used the seismo-tectonic approach for the shallower mantle and tomographic approach for the deeper mantle, as the seismic tomography models for slabs tend to be noisy.
 
 
-On the surface of the earth we generated a velocity field from MORVEL56 \citep{GGGE2060} in a no net rotation (NNR) reference frame. Each cross-sectional model generally defines a great circle arc, with local unit vector \textbf{d} in the direction of the circle, such that we extracted the velocity $v_{xs}=\textbf{d}\cdot\textbf{v}$.  The NNR reference frame was used as the side-walls on the two-dimensional cross sections preclude any large-scale differential motion between the bulk of the mantle and the plates.
+On the surface of the earth we generated a veloctiy field from MORVEL56 \citep{GGGE2060} in a no net rotation (NNR) reference frame. Each cross-sectional model generally defines a great circle arc, with local unit vector \textbf{d} in the direction of the circle, such that we extracted the velocity $v_{xs}=\textbf{d}\cdot\textbf{v}$.  The NNR reference frame was used as the side-walls on the two-dimensional cross sections preclude any large-scale differential motion between the bulk of the mantle and the plates.
 
 
 
@@ -545,7 +549,7 @@ On the surface of the earth we generated a velocity field from MORVEL56 \citep{G
 \centering
 \scalebox{1.6}{
 \hspace{-1.8cm}\subfigure{
-\includegraphics[height=150mm,width=100mm]{Summary_sections.pdf}%{mesh.pdf}
+\includegraphics[height=150mm,width=100mm]{Summary_sections_morvel56.pdf}%{mesh.pdf}
 }
 
 }
@@ -563,8 +567,9 @@ On the surface of the earth we generated a velocity field from MORVEL56 \citep{G
 
 
 Selecting a set of representative cross-sections in which all of the driving forces may be represented two-dimensionally is difficult, as it is likely that no plate and subduction zone is truly two-dimensional. 
+Wide cross-sections with plate motion parallel to a great circle orthogonal to a subduction zone are rare and so we focussed on smaller arc cross sections. 
 Nevertheless, we have chosen a set of cross-sections in which plate motion was generally orthogonally to the strike of the trench and which represent some of the end-member cases from the least to the most seismically coupled subduction zones (Fig.\ref{fig:xsection2sumatra}A). To investigate the coupling for various seismically coupled subduction zones, we consider the cross-sections in Fig. \ref{fig:xsection2sumatra}. 
-Our primary cross-section has the largest dimension (about $240^{\circ}$, WEP, weatern to eastern Pacific) and contains three subduction zones that span the range from the seismically coupled (Chile) to the least coupled (Marianas). This cross section contains one subduction zone with back-arc extension. Additional cross-sections in Fig.\ref{fig:xsection2sumatra} are smaller than WEP, and thus do not contain the coupling variability of the larger cross-section; however those cross-sections represent subduction zones that exhibit both substantial coupling (Sumatra) and little coupling (Tonga).
+Our primary cross-section has the largest dimension (about $240^{\circ}$, WEP, weatern to eastern Pacific) and contains three subduction zones that span the range from the seismically coupled (Chile) to the least coupled (Marianas). This cross section contains one subduction zone with back-arc extension. Additional cross-sections in Fig.\ref{fig:xsection2sumatra} are smaller than WEP, and thus do not contain the coupling variability of the larger cross-section; however those cross-sections represent subduction zones that exhibit both substantial coupling (Sumatra) and ittle coupling (Tonga).
 
 
 
@@ -603,63 +608,68 @@ and with a coefficient $\Gamma_i$ that was recovered in ~\eqref{eq:rheo}, $d_0$ 
 %In addition to the uncertainty of the reference frame, there is uncertainty in the motion of one plate with respect to others which can possibly influence the parameter estimation of plate couplings. Therefore, while it is possible that the magnitudes of the rheological parameters may be different for different tomography and plate motion models, the overall relative (mechanical) coupling of subduction zones should not vary from those obtained from seismic coupling (\citep{scholz2012seismic}).
 
 
-\mgnote{This is vague. The viscosity constraints need to be described in precise terms (e.g. magnitude of viscosity and geometry with reference citations}As presented earlier, the average effective viscosity data is an additional constraint that we will explore to determine the effect it has on the inference of the rheological parameters. Since the effective viscosity is a constraint on the mantle from observations, then this data should better constrain global parameters such as the strain rate exponent, activation energy, and upper mantle prefactors. We will place the average effective viscosity constraint of $\overline{\eta}_j = 10^{19} Pa\cdot s$ under the South American plate \mgnote{Why not $10^21$ Pa-s? We must discuss}, (as it is the only plate in our models with a substantial continental plate overriding a subduction zone), as well as underneath Japan with $\overline{\eta}_j = 10^{19} Pa\cdot s$ \citep{hu2016asthenosphere} \vrnote{i need to find the exact dimensions used}.\mgnote{The specific outlines of the constrain on the viscosity need to be shown}
+\mgnote{This is vague. The viscosity constraints need to be described in precise terms (e.g. magnitude of viscosity and geometry with reference citations}As presented earlier, the average effective viscosity data is an additional constraint that we will explore to determine the effect it has on the inference of the rheological parameters. Since the effective viscosity is a constraint on the mantle from observations, then this data should better constrain global parameters such as the strain rate exponent, activation energy, and upper mantle prefactors. We will place the average effective viscosity constraint of $\overline{\eta}_j = 10^{21} Pa\cdot s$ under the South American plate , (as it is the only plate in our models with a substantial continental plate overriding a subduction zone), as well as underneath Japan with $\overline{\eta}_j = 10^{19} Pa\cdot s$ \citep{hu2016asthenosphere} \vrnote{i need to find the exact dimensions used}.\mgnote{The specific outlines of the constrain on the viscosity need to be shown}
  While we are able to solve this nonlinear Stokes flow, we need to resolve the thermal boundary layers and fault zones. Doing so requires either using small elements with uniform refinement, which would be computationally expensive. Therefore, we use adaptive mesh refinement (AMR) and refine in areas such as cold thermal boundary layers (oceanic plates) and fault zones (2 km resolution). 
-We solve the nonlinear incompressible Stokes by linearizing the momentum equations, enabling the use of Newton's method \citep{rudi2015extreme}. 
+
+
+  Resolving the fine scale structures of the thermal boundary layers and fault zones is part of the process of solving the nonlinear Stokes equations; however, to accurately solve the Stokes system, we need to either use Picard or Newton's method, (both being iterative methods) obtain accurate flow velocities and the effective viscosity structure. While employing Picard is simpler in implementation, it falls short in a sufficient reduction of the residual of the Stokes system compared to Newton's method. Furthermore, the convergence obtained by Newton's method is significantly faster than what is obtained by Picard and results in a larger reduction of the residual of the Stokes system \citep{rudi2015extreme}. In addition to a significant reduction of the nonlinear residual of the Stokes system, solving the Stokes flow problem by Newton's method requires linearizing the nonlinear Stokes equation, which provides us with the adjoint equation. 
+
+\mgnote{A discussion and presentation of the numerical solution of Rhea is needed.}\vrnote{done}
 
 \section{Results}
 
-\mgnote{I haven't yet deleted the text I made earlier as I think that the Results section still needs a lot of work. In the UQ subsection there are parts where you are starting to give this physical understanding of the results, when it comes to the conditional distributions.}
+\subsection{Overview and stability}
 
-\mgnote{Both of these sub-sections suffer from the same problem. You say we tried case x and we get y, but there is no discussion of the 'why'. This is geodynamics, we are in the business of providing answers on the 'why'. How can you arrive at these conclusions and discussions? You need to look at the equations, both of motion and  viscosity, perhaps plots of effective viscosity and then your conditional distrbutions. I will give a lot of commentary in the days ahead on improving in this regard.}
+We infer rheological parameters that best fit observed plate motions
+within the context of the force balance on plates. 
+Unlike earlier use of a forward-adjoint Stokes optimization \citep{ratnaswamy2015adjoint} the rheological parameters were known, here they are not. 
+While inferring parameters, we ensure that the misfit with plate motions is minimized by reducing the norm of the gradient by three orders of magnitude.
+In the context of earlier work \citep{ratnaswamy2015adjoint} in which conditional and marginal distributions were computed through repeated forward solves (without assumptions on their form using MCMC) and assuming they follow Gaussians, we found that the distributions were smooth and without local minima.
+We test the sensitivity of inferences on the initial guess of strain rate exponent, $n$, to rule out the existance of multiple or local minimas. 
+For our standard case (Case 1), using the wide western to eastern Pacific (WEP) cross section with $n$, $\sigma_y$ and plate couplings inferred, we find no sensitivity on the initial guess of $n$ ranging from 2.0 to 3.5 (Table \ref{table:initial_guess}).
+This confirms that the posterior distribution for this particular set of
+parameters constrained by the velocity data is sufficiently smooth with no local minima
+and establishes that multiple inversions with diferent guesses are not required to confidently infer these rheological parameters. 
 
-\subsection{Inversions}
-Based on the numerical machinery that we have developed, look at what values of the rheological parameters that best fits the observed plate motions. Constraining those rheological parameters is important as it will provide an accurate balance of resisting forces within the plates. 
- Unlike our earlier studies \citep{ratnaswamy2015adjoint}, we do not know the true values of the rheological parameters. To make sure that we infer a set of parameters, we make sure that the misfit in plate potions is sufficicently minimized by reducing the norm of the gradient by three orders of magnitude. While, reducing the norm of the gradient is important, we need to test the sensitivity of the initial guess to determine if there are multiple minimas. Doing so, we test perturbing the initial strain rate exponent guess from 2.0 to 3.5  in Table \ref{table:initial_guess} and find that regardless of the initial guess of the strain rate exponent and show that we recover the same plate couplings, yield stress and strain rate exponent for the WEP cross-section. This result is important as it establishes that multiple inversions would not be needed to obtain as the inferred rheological parameters are the same independent of the initial guess. 
+\begin{table}[H]
+		\caption{Sensitivity of initial guesses for Case 1} % title of Table
+		\centering  % used for centering table
+		\begin{tabular}{ c c c c } % centered columns (2 columns)
+		\hline \hline                        %inserts double horizontal lines
+		 $n_{guess}$ &$n_{infer}$ &$\sigma_y$&$\Gamma $(SAM/RYU/IZU) $\cdot 10^{-5}$   \\ [0.5ex] % inserts table
+		%heading
+		\hline                  % inserts single horizontal line
+        	 2.0 &3.042 & 146 & $99.2/0.81/0.772$   \\
+	         2.95 &3.042 & 148 & $99.1/0.813/0.77$    \\
+	        3.5 &3.042 & 146.3 & $99.4/0.811/0.771$  \\             
+                \hline %inserts single line
+		\end{tabular}
+		\label{table:initial_guess} % is used to refer this table in the text
+\end{table}
+
+
+Looking at Case 1 in detail, the inversion rapidly minimizes the 
+cost function during several iterations with the forward velocity converging toward the plate motion data,
+including the major plates as well as small plates in the back-arc (Fig.~\ref{fig:inverse1}B,C).
+The effective viscosity varies between $10^{18}$ and $10^{24}$ Pa-s with major strain thinning within the upper mantle below the plates and weakening in the hinge zone of each subducting plate (Fig.~\ref{fig:inverse1}A).
+Besides the larger cross-section (WEP) we also use three other smaller cross sections with different regional structure (slab dip and length, for example) and different expected degrees of coupling. 
+We use one of these configurations to illustrate the non-linear feedbacks which occur in these systems. Using the coupled Middle America subduction zone we start with a forward model with a typical set of parameters, $n=3.08$, $\sigma_y=160$ MPa and $\Gamma=4.0\times10^{-3}$ which gives rise to a velocity of 2.98 cm/yr compared to the observed velocity of 6 cm/yr. We see a moderate amount of shear thining below the subduction plate (Fig.\ref{fig:middle_physics}AB) and some around the slab as evident through the reduction of effectve viscosity. We see a moderate amount of shear thining below the subducting plate (Fig.\ref{fig:middle_physics}AB) and some around the slab as evident through the reduction of effectve viscosity.
+However, when the coupling factor is is decreased by a factor of 10 ($\Gamma=4\cdot 10^{-5}$), the plate velocity inreases to \mgnote{value} cm/yr  and the the amount of strain rate weakening increases as evident through the much expended area of reduced effective viscosity below the plate as well as around the slab. In addition, when the coupling factor descreases, the degree of yielding within the hinge zone expands substantially Fig.\ref{fig:middle_physics}C). This interplay between the rheological parameters is important as it demonstrates a strong interaction between the global rheological parameters (yield stress and strain rate exponent) and local coupling parameter.
+The forward models also point the tradeoffs that will be expected between the rheological parameters.
+
+
+ Returning to inversion with Case 1, the five parameters, $n$, $\sigma_y$ and the three coupling factors all converge to stable values in about seven iterations (Fig.~\ref{fig:inverse1}C-E).
+The nonlinear exponent is 3.07, the yield stress is 137 MPa and the coupling factors show a clear difference between  Ryuku and Izu (with about the same small coupling) and South America with a much larger coupling (Table~\ref{table:inversions}). The actual, dimensional stress on these shear zones requires another adjoint solve, considered below.
  
-Establishing the stability of the inversions, we now systematically infer the rheological parameters for each cross-section, specifically the parameter ranges of the inferred strain rate exponent, yield stress and weakfactors (2)isolating what the parameter trade-offs are (3) how much the variance is minimized with additional viscosity data. Starting with the larger cross-section (WEP), we look at what the inferred parameters are solely due to the observations, without using priors oraverage viscosity data. We first begin by systematically varying what parameters to infer so as to ascertain what the tradeoffs are.  The main parameters that were explored in \citep{ratnaswamy2015adjoint} were the plate couplings, strain rate exponent, yield stress, activation energy and upper mantle prefactor in Cases 1-6. The range of inferred strain rate exponent lies within  3.047-3.09, which is approximately 1.67-2.67 $\%$ larger than the initiatl guess of 3.0. Furthermore, the infered strain rate exponent values suggest that there is more shear thinning in the upper mantle than what the initial state is, which further supports the claim that the upper mantle is governed by dislocation creep. 
-
-The yield stress is an important parameter as it provides weakening in the hinge zone to relieve the large stresses as plates bend. The inferred yield stress we find is in the range of 129.5-146 MPa, which is 7.92-21.67 $\%$ increase from the initial yield stress. This increase in yield stress suggests that plates have less dynamic weakening in the initial state, however; there is still dynamic weakening occurring within the hinge zone as evidenced by the reduction in the effective viscosity. Furthermore, in Cases 1-6, the average effective viscosity in the hinge zone is approximately 7-9 $10^{21} Pa\cdot s$, regardless of which combination of the parameters are inferred, suggesting that there is a bounded effective viscosity in the hinge zone that best minimizes the misfit in observed plate motions and model results. An important trend in Cases 1-6 is that as the strain rate exponent increases, the yield stress increases, implying that there may be a correlation between both parameters. Looking at the conditional distributions in Fig., we find that there is a positive trade-off such that as the strain rate exponent increases (plate motions increase), the yield stress also increases (reducing plate motions) to compensate for a weaker upper mantle, a result that was also found in \citep{ratnaswamy2015adjoint}.
-
-The plate couplings is an important part of our inferences as it tells us which plate boundaries have more shear resistance. In Cases 1-6, we find that there is a preferred ordering of the plate couplings, where South America is approximately two orders of magnitude larger than Ryukyu and Izu-Bonin. Furthermore, the values are fairly constant and generally fluctuate, which also suggests that these values generally are bounded, even without prior knowledge. The relationship between the plate couplings and yield stress are found in the conditional distribution in Fig. where we find for each subduction zone in WEP, there is a negative correlation between the plate couplings and the yield stress. This correlation can be explained due to an increase in coupling will reduce plate motions, which will promote more dynamic weakening in the form of reducing the yield stress, so as to increase plate motions. Analyzing the relationship between the plate couplings and strain rate exponent, we similarly find that there is a positive correlation between the strain rate exponent as expected due to an increase in plate coupling (decrease in plate motions) which requires an increase in the strain rate exponent to increase plate motions.  An important observation from the conditional distributions is that there is a partitioning of the plate couplings for Izu-Bonin, Ryukyu and South America, where Izu-Bonin and Ryukyu are grouped together on the decoupled spectrum, while South America is more on the coupled side.  
-
-Two new parameters that we inferred in these studies are the upper mantle prefactor and the activation energy. Both parameters control aspects of the viscosity contrast between the plates and the upper mantle. For example, increasing the upper mantle prefactor would increase the viscosity of the upper mantle, which would in turn reduce the viscosity jump between the upper and lower mantle. The activation energy would increase or decrease the viscosity contrast between the slabs and the mantle, and therefore plays a crucial role in ascertaining how strong slabs are.  Therefore, we examine the role of both these parameters on the plate couplings, yield stress and strain rate exponent. In an extreme case, we infer all the parameters in Case 6 and find that the pattern of South America having a larger plate coupling than Ryukyu and Izu-Bonin remains the same, suggesting that the plate couplings are independent of the global rheological parameters. We also find that when there is an increase in the activation energy, there also is an increase in the upper mantle prefactor which suggests that the viscosity contrast between the upper mantle and slabs is compensated by increasing the upper mantle prefactor. 
-
-While we inferred the rheology without knowledge and obtained important trade-offs between the rheological parameters, we need to reduce the uncertainty (variance) of the inferred parameters, which requires the use of priors and additional pieces of data. Introducing prior knowledge into our inversions, we us Gaussian priors for each of the inferred parameters, as shown in Table - making sure that we do not restrict the likelihood to a particular parameter space, that is not allowing out knowledge to influence the likelihood distribution strongly.  We repeat similar inversions in Cases 7-10, that were done in Cases 1-6 so as to ascertain if the correlations between the paramters remain (2)how does the \textbf{MAP} point change. Overall, we find that the correlations remain the same, that is there is a positive correlation between the strain rate exponent and yield stress remains. Furthermore, we find the ordering of plate couplings is the same, where South America is more coupled than Izu-Bonin and Ryukyu. With regard to the convergence of the parameters, we find that there is similar convergence to without using priors in Fig. (approximately 7 iterations).
-
-Using priors is standard for parameter inferences, an important result would be how the inferred global parameters such as the strain rate exponent, and activation would change when using average effective viscosity data is used, that is how much the variance of those parameters are minimized, and is the rate of convergence different from using priors. In Cases  , we find that that the rate of convergence is the same compared to Cases where priors were used (approximately 7 iterations), which is similar to Cases 1-10, where priors were not used. The plate couplings are similar to what was found previously, while the ordering is the same, suggesting that there is a preferential relative coupling for subduction zones. When examining the the correlations between the inferred parameters, we find that the strain rate exponent still has a positive correlation with the the yield stress, while the plate couplings are still exhibiting a negative correlation, signifying that with additional data, the underlying correlations remain due to the physics of the nonlinear Stokes flow system. 
-
-In a similar vain, we now enforce both priors and the average effective viscosity data to further minimize the variance of the inferred rheological parameters. Doing so will enable us to test if the priors and additional effective viscosity data would preserve the correlations between the rheological parameters. Doing so, we note a similar rate of convergence, where we reduce the norm of the gradient sufficiently compared to Cases 1-20. The inferred values are similar to what was found in previous cases; however, we find that the variances, are further minimized when looking at the conditional distributions, while the correlations remain the same. This result is indicative that we have not set strong priors, but rather allowed for the data to inform the parameters. 
-
-While WEP represents a large cross-section with subduction zones with various seismic coupling, what would happen if we were to focus on a sole subduction zone, if the parameters would be the same. Therefore, we repeat similar experiments as was done with WEP to see how the inferred parameters differ and if the same trade-offs exist. Similar to WEP, we repeat the same experiments where we we let the data decide what the parameters should be. Doing so, we find that when using plate motions, we find that similar to what was found in WEP, the inferred strain rate exponent is larger than the initial guess, more specifically, we find in Case 15 that the plate coupling is larger than what was found in Ryukyu and Izu-Bonin. Furthermore, the yield stress that was inferred is 143.1 MPa, which is in line with what was inferred for WEP, while holding the activation energy and upper mantle prefactor fixed. When the parameters are allowed to be unconstrained and we now infer all the parameters such as strain rate exponent, yield stress, plate coupling, upper mantle prefactor and activation energy. Inferring all the parameters in Case 16, we find that the strain rate exponent is 3.11, which is larger than what was inferred for WEP, while the yield stress is 141 MPa, which was similar to what was inferred in Case 15 for Sumatra. The plate coupling that was inferred is less than what was inferred in Case 15, however; the decrease in plate coupling could be due to an increase in plate coupling, which was found in the conditional distributions. The inferred activation energy for Sumatra in Case 16, is larger than the initial guess, a result that was similarly found for the cases in WEP, which suggests that when the parameters are unconstrained, the system prefers a stronger temperature dependent rheology. The increase in activation energy also brings about an increase in the upper mantle prefactor, which is a parameter that increases the effective viscosity as that parameter increases. 
-
-To address the activation energy value that was inferred in Case 16, we now fix the upper mantle prefactor to see what the impact would be on the activation energy. Doing so, we find that the plate coupling is lower that what was found in Cases 15-16; however, the value is still larger than what was inferred from WEP. The strain rate exponent and yield stress are lower than what was found for Sumatra in Cases 15-16, while the activation energy is lower than what was inferred in Case 16, where all parameters were inferred. The reduction in the inferred activation energy with regard to Case 16 can be attributed to keeping the upper mantle prefactor fixed (less than the inferred value in Case 16), which would require less temperature dependence on the effective viscosity. We continue to hold certain parameters fixed to isolate the trade-offs among other parmaeters. In Case 18, we fix the strain rate exponent, and infer the rest of the parameters. We find that the yield stress is lower than what was found in Cases 15-17, which can be due in part to the fixed value of the strain rate exponent (reduced from the inferred values). Furthermore, the plate coupling is also reduced from Case 17, which can be caused due to a lower yield stress, which causes more weakening. While, the yield stress and plate coupling have decreased, we find that the activation energy and upper mantle prefactor have increased similar to what was found in Case 16, which suggests that there may exist a strong connection between these global parameters. Similar to Case 18, we now fix the yield stress and infer the rest of the parameters, and find that there is an increase in the plate coupling with the increase in strain rate coupling. Furthermore, there is an increase in both the activation energy and upper mantle prefactor which furthermore suggests that both of these parameters are strongly correlated.  
-
-While we used data to infer the parameters for Sumatra, we need to look at how using priors can help reduce uncertainty as it did for WEP to determine if the correlations hold for different parameters. We find in Case 20, we find that when conditioning on the upper mantle prefactor and the activation energy, the strain rate exponent is larger than 3, further suggesting that the the inferences suggest that upper mantle is dominated by shear thinning. When allowing all the parameters to be inferred, we find that the strain rate exponent is larger than Case 20, while the activation energy and upper mantle prefactor increased. The increase in he upper mantle prefactor coincides with an increase in the activation energy, which can be explained due to the increase in viscosity variations from an increase in the activation energy, which in turn requires an increase in the upper mantle prefactor to compensate for that increase. Furthermore, the increase in upper mantle prefactor can precipitate an increase in the strain rate exponent so as to compensate for the increase in viscosity. When conditioning on either the strain rate exponent (Case 23) or yield stress (Case 24), we find that the plate coupling decreases from Cases 20 and 21 when those two global parameters were not fixed.
-
-In a similar vein, we investigate the Tonga subduction zone using data and priors. We find that the inferred plate coupling for Tonga is lower on average for cases with (28-31) and without priors (24-27). This result is indicative of Tonga preferring a more decoupled plate boundary than South America and Sumatra, regardless of prior knowledge. We find that we do not impose priors, we infer a strain rate exponent larger than the initial guess for Cases 24-27. However, these values  do fluctuate depending on the number of parameters to be inferred, that is when the number of parameters increase, the strain rate exponent tends to be larger. Overall, we find that the average effective viscosity in the weakzone is consistently the same, with an average value of $8.52 \pm 0.17 Pa \cdot s$, suggesting that regardless of which combination of parameters are inferred the average effective viscosity value within the hinge zone is conserved. 
-
-We end our analysis at the Central America subduction zone, where we compare how the plate coupling and global rheological parameters are similar or different to the previous cross-sections. One of the main results we find from Central America whether we impose or do not impose priors, the plate coupling is smaller than South America in WEP and Sumatra, while larger than Tonga in Cases 32-39, indicative of a preferential ordering of plate couplings among the cross-sections. Furthermore, in the absence of priors and all the parameters are inferred in Case 33, we find that there is an increase in strain rate exponent (about 1.89$\%$) compared to what was inferred when the activation energy and upper mantle prefactor were fixed in Case 32. Furthermore, we see a similar pattern to previous cross-sections where if either the strain rate exponent or yield stress is held fixed, the inferred strain rate exponent or yield stress is smaller than if both were inferred. For comparison, when we impose priors, we have an overall reduction in the strain rate exponent in Case 38, where all the parameters are free; however, the reduction in strain rate exponent still is larger than if some of the parmaeters are fixed in Case 32-33.
-
-While, we see a pattern of which involves a partitioning of the plate couplings, a natural question to ask would be what if any overall changes would there be to the average viscosity in the uppermantle due to the nonlinear nature of the rheology. We find that overall, the average effective viscosity between all cases are $\mathcal{\O}(21)$; however, the values do fluctuate on a case by case basis per cross-section. For WEP, we find that the average effective viscosity in the upper mantle to be in the range of $2.29-4.57 \cdot 10^{21}Pa\cdot s$, suggesting that depending on the inferred value of the global rheological parameters (upper mantle prefactor, strain rate exponent), the average effective viscosity can increase if the strain rate exponent is small enough such that there is a dampening of shear thinning when there is an increase in the upper mantle prefactor. Looking at the smaller cross-sections we find that for Sumatra, there is a similar range of average effective viscosity in the upper mantle $[1.94,3.97]\cdot 10^{21}Pa\cdot s$ with the lower bound having a , which has a smaller upper bound than that of WEP. Similarly, we observe similar average effective viscosity ranges for Tonga ($[1.93,3.93]\cdot 10^{21}Pa\cdot s$) and Central America ($[1.89,3.15]\cdot 10^{21}Pa\cdot s$), suggesting that even though these cross-sections are different, the underlying properties of the rheology of the upper mantle remains the same.
-
-While we see that the average viscosity of the upper mantle is similar between the four cross-sections, an important question would be whether the local viscosity at the hinge zones would vary between subduction zones as well as if those values are conserved depending on what parameters are inferred. We find for WEP (Cases 1-14), the average viscosity values for South America, Ryukyu and Izu-Bonin do not vary between cases, suggesting that the amount of dynamic weakening at hinge zones is conserved. Furthermore, we find that similar to the plate couplings, there is an ordering to the average effective viscosity in the hinge zone, where South America has the smallest average effective viscosity while Ryukyu has the largest of the three subduction zones. This result suggests that the more coupled subduction zone (South America) undergoes more weakening as there is a larger buildup of stress due to the stronger coupling in South America compared to Ryukyu and Izu Bonin.  Similar to WEP, we find that for Sumatra, Tonga and Central America have fairly constant average effective viscosity values that exhibit little change with regard to what parameters are inferred, further suggesting that the average effective viscosity in the hinge zone is a conserved quantity.
-
-Following this analysis of viscosity in the mantle, we compute the average forces on the plates in an attempt to see if such forces are also conserved. Specifically, we examine the total drag underath the oceanic plate, slab pull, the cumulative shear force around the slab, bending force and the shear force from the weak zone. We confine our analysis to Sumatra and Central America, the two smaller cross-sections out of the four models since this will allow us to focus on how the forces affect a single subduction zone compared to the multi-subduction zones in WEP. In Sumatra, we find that the average forces remains invariant regardless of the parameters inferred (Cases 14-23), suggesting that this force balance in the system are invariant, regardless of what parameters are inferred. Furthermore, this result suggests that there is a preferred effective viscosity structure that is promoted by weakening from the the interplate coupling.
-
-Analyzing the drag under the oceanic plates for Sumatra, we find on average that the average force is $1.30 \pm 0.104 \cdot 10^{13}  N/m$ which indicates that the drag is fairly invariant. Comparing the drag to the slab pull force, we see that the drag is clearly smaller considering that slab pull accounts for most of the force balance. Furthermore, the drag force is comparable to the slab shear and fault shear force, each being of similar magnitude. While the shear and drag forces are notable smaller than slab pull, the bending force is significantly larger than the shear and drag forces, suggesting that the amount of dissipation that occurs at hinge zones is strongly correlated with bending. Comparing these results to Central America, we find a similar result to Sumatra with regard to the order of magnitude of forces, that is the drag force is the least, while the bending force is comparable to the slab pull force
-
-
-
 
 \begin{sidewaystable}
 
 \centering
 
 	\begin{table}[H]
-		\caption{Case study summary\mgnote{ADD Footnote "Bold values are held fixed during the optimization"; "WEP: Western to eastern Pacific". Priors and visc data need to be seperate columns. It would be helpful (no essential) to have seperate collumns which give the effective viscsoity of both the upper mantle and the hing zone. Probably need a small Font to get everything in one Table }} % title of Table
+		\caption{Summary of inversions (bold values held fixed)} % title of Table
 		\centering  % used for centering table
-        \scalebox{0.4}{
+        \scalebox{0.8}{
 		\begin{tabular}{c c c c c c c c c c c } % centered columns (2 columns)
 		\hline \hline                        %inserts double horizontal lines
 		Case & Subduction Zone & \textit{n} &$\sigma_y$&$\Gamma$ (SAM/RYU/IZU) $\cdot 10^{-5}$ &UM Prefactor &$E_a (kJ/mol)$&Visc. data   & Prior & Average $\eta_{UM} (10^{21})$  & $\eta_{hinge} (10^{21})$  \\ [0.5ex] % inserts table
@@ -711,6 +721,114 @@ Analyzing the drag under the oceanic plates for Sumatra, we find on average that
 \end{sidewaystable}
 
 
+With the stability of inversion established, we now systematically infer rheological parameters, the influence of the choice of which parameters are retained in the inversion, isolate parameter trade-offs, and determine the influence of adding additional viscosity data and prior knowledge. 
+Starting with the larger cross-section (WEP), we hold fixed combinations of strain rate exponent, yield stress, activation energy and upper mantle prefactor in Cases 1-5; in all inversions the plate couplings are left free. The range of inferred strain rate exponent lies within  3.05 to 3.09, the yield stress lies within 130 to 143 MPa, and the activation energy, $E_a$, lies within 199 to 233 kJ/mol. Although in Case 6 with all of the rheological parameters left free, the non-linear exponent, yield stress and plate couplings all converge with stable values in about seven iterations (Fig.~\ref{fig:inverse1}D-F).
+
+
+The Sumatra subduction zone is of particular interest as it is thought to be one of the more seismically coupled subduction zones. Therefore, we repeat similar case studies as was done for WEP. For Sumatra, we find in Case 21 \mgnote{no Case 21 in Table}, that the global strain rate exponent is 3.08, while 3.063 for when priors are imposed. When it comes to the activation energy, we find a value of $217.4 kJ/mol$ when we do not include prior knowledge, while 
+with prior knowledge we find a value of $224.9 kJ/mol$. Furthermore, the inferred yield stress ranges from 132.6 MPa to 141.7 MPa, values that are similar to what were obtained in WEP. While the Sumatra model is a different subuction zone than was was examined in WEP, we find that there is a similar value for the plate coupling for Sumatra.
+
+We turn to the Middle America subduction zone, where we compare how the plate coupling and global rheological parameters are similar or different to the previous cross-sections. One of the main results we find from Central America whether we impose or do not impose priors, the plate coupling is smaller than South America in WEP and Sumatra, while larger than Tonga in Cases 32-39, indicative of a preferential ordering of plate couplings among the cross-sections. Furthermore, in the absence of priors and all the parameters are inferred in Case 33, we find that there is an increase in strain rate exponent (about 1.89$\%$) compared to what was inferred when the activation energy and upper mantle prefactor were fixed in Case 32. Furthermore, we see a similar pattern to previous cross-sections where if either the strain rate exponent or yield stress is held fixed, the inferred strain rate exponent or yield stress is smaller than if both were inferred. For comparison, when we impose priors, we have an overall reduction in the strain rate exponent in Case 38, where all the parameters are free; however, the reduction in strain rate exponent still is larger than if some of the parmaeters are fixed in Case 32-33.
+
+
+
+  % The first case study is shown below in Fig.\ref{fig:inverse1}
+\begin{figure}[H]
+\centering
+
+\hspace{-0.2cm}\subfigure{
+\includegraphics[height=140mm,width=128mm]{fig3.pdf}%{mesh.pdf}
+}
+
+\caption{
+(A) Effective viscosity in the final converged state of Case 1 for the WEP cross section. Distance in degrees east along the great circle.
+(B) Case 1 surface velocity at two iterations (dashed lines) compared with plate motion data (solid blue line). The velocity near the Izu plate margin shown in detail.
+(C) Convergence of coupling factors  for Case 1 (solid circles) and Case 6 (open squares) for the South American (SAM in blue), Ryuku (RYU in black), and Izu (IZU in green) plate margins. 
+Convergence for the non-linear exponent ($n$, shown in D)  and yield stress ($\sigma_y$, shown in E) for three cases (Case 1 and 6 have the same symbol as in C while Case 14 s shown with the open diamond symbols).
+}
+\label{fig:inverse1}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+
+\hspace{-1.0cm}\subfigure{
+\includegraphics[scale =0.5]{contour_theory.pdf}%{mesh.pdf}
+}
+
+\hspace{0.2cm}\subfigure{
+\includegraphics[scale=0.5]{contour_theory2.pdf}%{mesh.pdf}
+}
+\caption{Effective viscosity for two forward model for Middle America (A) Coupled ($\Gamma = 4.0 \cdot 10^{-3}$, $\sigma_y = 160$ MPa, and $n = 3.08$) (B) Zoom in of Middle America and increase in strain rate exponent (C) ($\Gamma = 1.0 \cdot 10^{-5}$, $\sigma_y = 160$ MPa, $n = 3.08$)
+(B) Zoom in of Middle America subduction zone.}
+\label{fig:middle_physics}
+\end{figure}
+
+
+\subsection{Conditionals}
+
+The uncertainty of inferred rheological parameters is examined through posterior distributions as conditionals. The conditional distributions convey not only uncertainty in each parameter, trade-offs between them, but how they contribute to the underlying model physics. 
+We find conditionals by using the covariance matrix of model parameters
+through an inverse of the Hessian matrix (eq. \mgnote{Eq num}).
+
+
+
+Using the conditionals for Case 1, we see a strong positive correlation between strain rate exponent and yield stress (Fig.~\ref{fig:distrib}c), a weak negative correlation between the plate couplings and yield stress (Fig.~\ref{fig:distrib}b) and a weak positive correlation between plate couplings and strain rate exponent (Fig.~\ref{fig:distrib}a). 
+Yield stress and strain-rate exponent both control the degree of nonlinearity of the system; nonlinearity is increased with larger $n$, so $\sigma_y$ must decrease in order to fit the kinematic constraints.
+The positive correlation between the strain rate exponent and yield stress suggests that as the strain rate exponent increases, upper mantle viscosity decreases and the drag on the base of plates decrease, resulting in an increase in yield stress in order to increase the resistance in the hinge zone. 
+Likewise, an increase in plate coupling could be accomplished through either changes in $n$ or $\sigma_y$. One means would be a decrease in upper mantle viscosity realized by a larger non-linear exponent, $n$.  
+An alternative means is accomplished through a decrease in hinge viscosity realized through a reduction in yield stress.  
+
+With just the plate motion data, the variance on the nonlinear exponent $n$ is large wih a 95% confidence interval of \mgnote{_value_}.
+
+We compare the conditional distributions for the plate couplings vs. yield stress and strain rate exponent for Case 1  (Fig.\ref{fig:distrib}a,b) and find that there is a clear demarcation between the least coupled subduction zones (Ryukyu and Izu-Bonin) and South America. The partitioning of the subduction zones suggest that the South America plate boundary is more mechanically coupled compared to Ryukyu and Izu-Bonin regardless of the global parameter (yield stress and strain rate exponent). We find a similar partitioning for Cases 2-3 for the larger cross-section and shows that regardless of prior knowledge or addition of average effective viscosity data, there still is a preferential ordering of  plate coupling. 
+
+The relationship between the plate couplings and yield stress are found in the conditional distribution (Fig. XX) where we find for each subduction zone in WEP, there is a negative correlation between the plate couplings and the yield stress. This correlation can be explained due to an increase in coupling will reduce plate motions, which will promote more dynamic weakening in the form of reducing the yield stress, so as to increase plate motions. Analyzing the relationship between the plate couplings and strain rate exponent, we similarly find that there is a positive correlation between the strain rate exponent as expected due to an increase in plate coupling (decrease in plate motions) which requires an increase in the strain rate exponent to increase plate motions.  An important observation from the conditional distributions is that there is a partitioning of the plate couplings for Izu-Bonin, Ryukyu and South America, where Izu-Bonin and Ryukyu are grouped together as decoupled, while South America is always on the coupled side.  
+
+\subsection{Adding priors}
+
+Prior knowledge is introduced into the inversions, with Gaussian distributions for each of the inferred parameters (Table ZZ) making sure that we do not restrict the likelihood to a particular parameter space.  Repeating a set of inversions in Cases 7-10, for the WEP cross section and determine that the form of the correlations remain invariant, including a positive correlation between the strain rate exponent and yield stress. Furthermore, we confirm the ordering of plate couplings, where South America is more coupled than Izu-Bonin and Ryukyu. With regard to the convergence of the parameters, we find that there is similar convergence to without using priors in Fig. (approximately 7 iterations).
+
+While we used data to infer the parameters for Sumatra, we need to look at how using priors can help reduce uncertainty as it did for WEP to determine if the correlations hold for different parameters. We find in Case 20, we find that when conditioning on the upper mantle prefactor and the activation energy, the strain rate exponent is larger than 3, further suggesting that the the inferences suggest that upper mantle is dominated by shear thinning. When allowing all the parameters to be inferred, we find that the strain rate exponent is larger than Case 20, while the activation energy and upper mantle prefactor increased. The increase in he upper mantle prefactor coincides with an increase in the activation energy, which can be explained due to the increase in viscosity variations from an increase in the activation energy, which in turn requires an increase in the upper mantle prefactor to compensate for that increase. Furthermore, the increase in upper mantle prefactor can precipitate an increase in the strain rate exponent so as to compensate for the increase in viscosity. When conditioning on either the strain rate exponent (Case 23) or yield stress (Case 24), we find that the plate coupling decreases from Cases 20 and 21 when those two global parameters were not fixed.
+
+In a similar vein, we investigate the Tonga subduction zone using data and priors. We find that the inferred plate coupling for Tonga is lower on average for cases with (28-31) and without priors (24-27). This result is indicative of Tonga preferring a more decoupled plate boundary than South America and Sumatra, regardless of prior knowledge. We find that we do not impose priors, we infer a strain rate exponent larger than the initial guess for Cases 24-27. However, these values  do fluctuate depending on the number of parameters to be inferred, that is when the number of parameters increase, the strain rate exponent tends to be larger. Overall, we find that the average effective viscosity in the weakzone is consistently the same, with an average value of $8.52 \pm 0.17 Pa \cdot s$, suggesting that regardless of which combination of parameters are inferred the average effective viscosity value within the hinge zone is conserved. 
+
+\mgnote{What about the convergence rate when priors are used? Describe.}
+While using additional data may reduce the uncertainty of the inferred parameters, 
+\mgnote{Is this a generic statement or something that you have just demonstrated?}
+the inclusion of prior knowledge would certainly aid in reducing the variance of the inferred parameters. Using knowledge from experimental data \citep{korenaga2008new}, we include prior knowledge as Gaussian distributions with mean values of $\overline{n}=2.95$, $\overline{\sigma}_y = 120$ MPa, and $\overline{\Gamma}=10^{-5}$, while using variances that do not place strong constraints on the inferred parameters (Case 4). 
+
+
+\subsection{Inclusion of viscosity data}
+
+An open question about parameter trade-offs deals with additional data, more specifically the average effective viscosity in certain regions of the mantle. 
+It is not apparent if these trade-offs will exist with additional data due to the different effects each parameter on both plate motions and average effective viscosity, even though we find similar values for the \textbf{MAP} point between the Case  (without effective viscosity data) and Case 3 (with effective viscosity data). In Fig.\ref{fig:distrib}c we see that the overall distributions are similar in that the trade-offs are the same; however, with the reduction in the variance for the strain rate exponent, the conditional distribution for the strain rate exponent and yield stress, when using average effective viscosity data, is smaller. The additional effective viscosity data acts as prior information marginally reduce the uncertainty on the inferred parameters \mgnote{Is the reduction in the varinces for $\sigma_y$ and $n$ the same?}. 
+\mgnote{I think significantly, the slope of the yield stress vs. n increases when the viscosity data is included. Why is this the case? As I asked in the prior section, is the viscosity value that you constrain the system with, larger or smaller than the effective viscosity in the same region without such a constraint. Can you say, that the importance of the yield stress increases when you have added this additional constraint?}
+
+While we see that the average viscosity of the upper mantle is similar between the four cross-sections, an important question would be whether the local viscosity at the hinge zones would vary between subduction zones as well as if those values are conserved depending on what parameters are inferred. We find for WEP (Cases 1-14), the average viscosity values for South America, Ryukyu and Izu-Bonin do not vary between cases, suggesting that the amount of dynamic weakening at hinge zones is conserved. Furthermore, we find that similar to the plate couplings, there is an ordering to the average effective viscosity in the hinge zone, where South America has the smallest average effective viscosity while Ryukyu has the largest of the three subduction zones. This result suggests that the more coupled subduction zone (South America) undergoes more weakening as there is a larger buildup of stress due to the stronger coupling in South America compared to Ryukyu and Izu Bonin.  Similar to WEP, we find that for Sumatra, Tonga and Central America have fairly constant average effective viscosity values that exhibit little change with regard to what parameters are inferred, further suggesting that the average effective viscosity in the hinge zone is a conserved quantity.
+
+
+
+\subsection{Inference of fault zone stresses}
+
+
+One of the key analyses that was developed in this chapter was the characterization of the uncertainty of the stresses (shear and normal) of each plate boundary that is built upon a Gaussian approximation around the \textbf{MAP} point for each inversion. We apply this approach to our models \mgnote{Case numbers}as shown in Fig.\ref{fig:shear_smaller}a,b, where we compare the mean normal and shear stresses of each plate boundary and find that there is a similar pattern of the partitioning between the least coupled subduction zones of Ryukyu and Izu-Bonin to the more coupled subduction zone of South America. Similar to Fig.\ref{fig:distrib}, the same pattern of a more coupled South America plate boundary appears (both normal and shear stresses), regardless of the global parameter. However, we note that the mean of the computed normal stress is lower than the shear stresses, which is certainly not expected.
+
+
+We similarly compared the stress conditional distributions for Sumatra and Tonga in Fig.\ref{fig:shear_smaller}c,d and find that the shear average shear stress in the fault zones are larger than the normal stress. Similar to South America, we find that there is a partitioning of subudction zones for both shear and normal stresses, where Sumatra is more coupled than Tonga.
+
+
+\subsection{Hinge zone viscosity}
+
+The yield stress governs weakening in the hinge zone and relieves otherwise large stresses as plates bend. The inferred yield stress is in the range of 129.5-146 MPa, 9-22 $\%$ larger than the initial yield stress. Although having less dynamic weakening compared to the initial guess, dynamic weakening does occur within the hinge zone, evident by the reduction in the effective viscosity (Fig.~\ref{fig:inverse1}A). Furthermore, in Cases 1-6, the average effective viscosity in the hinge zone is approximately 7-9 $10^{21} Pa\cdot s$, regardless of which combination of the parameters are inferred, suggesting that there is a bounded effective viscosity in the hinge zone that best minimizes the misfit in observed plate motions and model results.
+
+
+
+\subsection{Force balance}
+
+Following this analysis of viscosity in the mantle, we compute the average forces on the plates in an attempt to see if such forces are also conserved. For WEP, we find that \mgnote{Why is the equation for fault normalized but the others are not. Why is it normalized by "trench depth" and not "length or depth of fault"?}
+
 \begin{equation}
 F_{drag} = \int \textbf{T}\ssigma \cdot \textbf{n} dl
 \end{equation}
@@ -730,17 +848,20 @@ F_{bend} = \int \ssigma_{II} dA
 \begin{equation}
 F_{fault} = \frac{1}{\text{trench depth}}\int \textbf{T}\ssigma\cdot\textbf{n} dA
 \end{equation} 
+
+
+The resolution of these forces has been computed (Table~\ref{table:force_balance}).
  
 \begin{table}[H]
 		\caption{Force Distribution} % title of Table
 		\centering  % used for centering table
          \scalebox{0.5}{
-		\begin{tabular}{ c c c c c c c c c } % centered columns (2 columns)
+		\begin{tabular}{ c c c c c c c c } % centered columns (2 columns)
 		\hline \hline                        %inserts double horizontal lines
-		 Case & Subduction Zone &  $\text{Drag Force} (10^{12}N/m)$ &  $\text{Slab Pull Force} (10^{12}N/m)$ &  $\text{Slab Shear Force} (10^{12}N/m)$ &  $\text{Bending Force} (10^{12}N/m)$ &  $\text{Fault Shear Force} (10^{12}N/m)$   \\ [0.5ex] % inserts table
+		 Subduction Zone &  $\text{Drag Force} (10^{12}N/m)$ &  $\text{Slab Pull Force} (10^{12}N/m)$ &  $\text{Slab Shear Force} (10^{12}N/m)$ &  $\text{Bending Force} (10^{12}N/m)$ &  $\text{Fault Shear Force} (10^{12}N/m)$   \\ [0.5ex] % inserts table
 		%heading
 		\hline                  % inserts single horizontal line
-         15 & Sumatra & $1.17$ & $7.37$ & $1.71$ & $3.14$ & $1.4$  \\
+           15 & Sumatra & $1.17$ & $7.37$ & $1.71$ & $3.14$ & $1.4$  \\
         16 & Sumatra&  $1.25$ & $7.37$ & $1.73$ & $3.01$ & $1.4$\\
         17 & Sumatra&  $1.21$ & $7.37$ & $1.81$ & $2.98$ & $1.5$\\ 
        18 & Sumatra& $1.37$ & $7.37$ & $1.64$ & $2.99$ & $1.4$ \\
@@ -760,27 +881,28 @@ F_{fault} = \frac{1}{\text{trench depth}}\int \textbf{T}\ssigma\cdot\textbf{n} d
                 \hline %inserts single line
 		\end{tabular}
         }
-		\label{table:initial_guess} % is used to refer this table in the text
-		\end{table}
+		\label{table:force_balance} % is used to refer this table in the text
+\end{table}
+
+
+\subsection{additional material}
+
+The upper mantle prefactor and the activation energy are also inferred as they contribute viscosity contrast between plates and upper mantle. In a linear viscosity, the upper mantle prefactor would increase the viscosity of the upper mantle, which would in turn reduce the viscosity jump between the upper and lower mantle. The activation energy would increase or decrease the viscosity contrast between the slabs and the mantle, and therefore plays a crucial role in ascertaining how strong slabs are.  In one case, we infer all the parameters in Case 6 and find that the pattern of South America having a larger plate coupling than Ryukyu and Izu-Bonin remains the same, suggesting that the plate couplings are independent of the global rheological parameters. Also when the inferred activation energy increases, there also is an increase in the upper mantle prefactor which suggests that the viscosity contrast between the upper mantle and slabs is compensated by increasing the upper mantle prefactor. 
 
 
 
 
-\begin{table}[H]
-		\caption{Sensitivity of initial guesses for Case 1} % title of Table
-		\centering  % used for centering table
-		\begin{tabular}{ c c c c } % centered columns (2 columns)
-		\hline \hline                        %inserts double horizontal lines
-		 $n_{guess}$ &$n_{infer}$ &$\sigma_y$&$\Gamma $(SAM/RYU/IZU) $\cdot 10^{-5}$   \\ [0.5ex] % inserts table
-		%heading
-		\hline                  % inserts single horizontal line
-        	 2.0 &3.042 & 146 & $99.2/0.81/0.772$   \\
-	         2.95 &3.042 & 148 & $99.1/0.813/0.77$    \\
-	        3.5 &3.042 & 146.3 & $99.4/0.811/0.771$  \\             
-                \hline %inserts single line
-		\end{tabular}
-		\label{table:initial_guess} % is used to refer this table in the text
-		\end{table}
+Starting with the cross section for Sumatra, we repeat a similar set of experiments by systematically holding one or more parameters fixed. We find that similar to WEP results, the inferred strain rate exponent is larger than the initial guess, more specifically, we find in Case 15 that the plate coupling is larger than what was found in Ryukyu and Izu-Bonin. Furthermore, the yield stress that was inferred is 143.1 MPa, which is in line with what was inferred for WEP, while holding the activation energy and upper mantle prefactor fixed. When the parameters are allowed to be unconstrained and we now infer all the parameters such as strain rate exponent, yield stress, plate coupling, upper mantle prefactor and activation energy. Inferring all the parameters in Case 16, we find that the strain rate exponent is 3.11, which is larger than what was inferred for WEP, while the yield stress is 141 MPa, which was similar to what was inferred in Case 15 for Sumatra. The plate coupling that was inferred is less than what was inferred in Case 15, however; the decrease in plate coupling could be due to an increase in plate coupling, which was found in the conditional distributions. The inferred activation energy for Sumatra in Case 16, is larger than the initial guess, a result that was similarly found for the cases in WEP, which suggests that when the parameters are unconstrained, the system prefers a stronger temperature dependent rheology. The increase in activation energy also brings about an increase in the upper mantle prefactor, which is a parameter that increases the effective viscosity as that parameter increases. 
+
+To address the activation energy value that was inferred in Case 16, we now fix the upper mantle prefactor to see what the impact would be on the activation energy. Doing so, we find that the plate coupling is lower that what was found in Cases 15-16; however, the value is still larger than what was inferred from WEP. The strain rate exponent and yield stress are lower than what was found for Sumatra in Cases 15-16, while the activation energy is lower than what was inferred in Case 16, where all parameters were inferred. The reduction in the inferred activation energy with regard to Case 16 can be attributed to keeping the upper mantle prefactor fixed (less than the inferred value in Case 16), which would require less temperature dependence on the effective viscosity. We continue to hold certain parameters fixed to isolate the trade-offs among other parmaeters. In Case 18, we fix the strain rate exponent, and infer the rest of the parameters. We find that the yield stress is lower than what was found in Cases 15-17, which can be due in part to the fixed value of the strain rate exponent (reduced from the inferred values). Furthermore, the plate coupling is also reduced from Case 17, which can be caused due to a lower yield stress, which causes more weakening. While, the yield stress and plate coupling have decreased, we find that the activation energy and upper mantle prefactor have increased similar to what was found in Case 16, which suggests that there may exist a strong connection between these global parameters. Similar to Case 18, we now fix the yield stress and infer the rest of the parameters, and find that there is an increase in the plate coupling with the increase in strain rate coupling. Furthermore, there is an increase in both the activation energy and upper mantle prefactor which furthermore suggests that both of these parameters are strongly correlated.  
+
+
+
+
+%While, we see a pattern of which involves a partitioning of the plate couplings, a natural question to ask would be what if any overall changes would there be to the average viscosity in the uppermantle due to the nonlinear nature of the rheology. We find that overall, the average effective viscosity between all cases are $\mathcal{\O}(21)$; however, the values do fluctuate on a case by case basis per cross-section. For WEP, we find that the average effective viscosity in the upper mantle to be in the range of $2.29-4.57 \cdot 10^{21}Pa\cdot s$, suggesting that depending on the inferred value of the global rheological parameters (upper mantle prefactor, strain rate exponent), the average effective viscosity can increase if the strain rate exponent is small enough such that there is a dampening of shear thinning when there is an increase in the upper mantle prefactor. Looking at the smaller cross-sections we find that for Sumatra, there is a similar range of average effective viscosity in the upper mantle $[1.94,3.97]\cdot 10^{21}Pa\cdot s$ with the lower bound having a , which has a smaller upper bound than that of WEP. Similarly, we observe similar average effective viscosity ranges for Tonga ($[1.93,3.93]\cdot 10^{21}Pa\cdot s$) and Central America ($[1.89,3.15]\cdot 10^{21}Pa\cdot s$), suggesting that even though these cross-sections are different, the underlying properties of the rheology of the upper mantle remains the same.
+
+
+
 \mgnote{Specifically, is the effective viscosity before you add this additional constraint larger or smaller than the effective viscosity constraint? Look at this for both the whole upper mantle as well as in the specific area that the effective viscosity constraint is added.}
 
 
@@ -806,45 +928,6 @@ F_{fault} = \frac{1}{\text{trench depth}}\int \textbf{T}\ssigma\cdot\textbf{n} d
 
 
 
-  % The first case study is shown below in Fig.\ref{fig:inverse1}
-\begin{figure}[H]
-\centering
-
-\hspace{-0.2cm}\subfigure{
-\includegraphics[height=65mm,width=128mm]{vish_contour.pdf}%{mesh.pdf}
-}
-\hspace{-0.4cm}\subfigure{
-\includegraphics[height=35mm,width=58mm]{data_morvel.pdf}%{mesh.pdf}
-}
-\hspace{-0.2cm}\subfigure{
-\includegraphics[height=35mm,width=58mm]{fig3b.pdf}%{mesh.pdf}
-}
-\hspace{-0.4cm}\subfigure{
-\includegraphics[height=35mm,width=58mm]{fig3c.pdf}%{mesh.pdf}
-}
-\hspace{-0.2cm}\subfigure{
-\includegraphics[height=35mm,width=58mm]{fig3d.pdf}%{mesh.pdf}
-}
-%\hspace{-0.2cm}\subfigure[]{
-%\includegraphics[height=35mm,width=58mm]{um_chap4.pdf}%{mesh.pdf}
-%}
-
-\caption{\mgnote{The labels in the Figure don't correspond with those in the Caption.}
-(A) Effective viscosity for Case 1. \mgnote{Distance is flipped compared to Fig. 2C. Also the aspect ratio is messed upi -- it is stretched horizontally.}
-(B) Surface velocity comparison between data and different iterations (Case 1). \mgnote{We need a zoom in on the velocity near the back-arc basin. This could be made a as an "insert". Please come by and see me for what I mean.}
-(C) Plate boundary weakfactor iteration: South America (blue lines), Izu-Bonin (red lines), Ryukyu (black lines), with \textit{circles} being velocity data only, \textit{diamonds} \mgnote{Diamonds need to be made open diamonds because it is impossible to easily distinguish them from the close circles.} being velocity and effective viscosity data and \textit{asterisks} \mgnote{I can't see any asterisks} being velocity and priors  (d) strain rate exponent iteration \textit{blue circle} being plate velocities, \textit{blue diamonds} being a different initial guess, \textit{black circle} being velocity and effective viscosity data and \textit{red circle} being velocity and priors (e) yield stress iteration with \textit{blue circle} being plate velocities, \textit{black circle} being velocity and effective viscosity data and \textit{red circle} being velocity and priors .
-\mgnote{Figure is too confusing. Symbols and colors need to be used in the same way in B-D. Please comeby and we can discuss why.}
-}
-\label{fig:inverse1}
-\end{figure}
-
-\mgnote{What about the convergence rate when priors are used? Describe.}
-While using additional data may reduce the uncertainty of the inferred parameters, 
-\mgnote{Is this a generic statement or something that you have just demonstrated?}
-the inclusion of prior knowledge would certainly aid in reducing the variance of the inferred parameters. Using knowledge from experimental data \citep{korenaga2008new}, we include prior knowledge as Gaussian distributions with mean values of $\overline{n}=2.95$, $\overline{\sigma}_y = 120$ MPa, and $\overline{\Gamma}=10^{-5}$, while using variances that do not place strong constraints on the inferred parameters (Case 4). 
-
-
- % The first case study is shown below in Fig.\ref{fig:inverse1}
 \begin{figure}[H]
 \centering
 
@@ -862,9 +945,6 @@ Effective viscosity for (A) Sumatra \mgnote{Need outline of zoom in areas in A a
 \label{fig:visc_smaller}
 \end{figure}
 
-While the larger cross-section (Cases 1-4) has the advantage of having subduction zones of varying seismogenic coupling, it is important to compare the parameter inferences from the larger cross-section (WEP) to other cross-sections with different subduction zones to determine if the global parameters would be of similar magnitude and how. 
-The Sumatra subduction zone is of particular interest as it is thought to be one of the more seismically coupled subduction zones. Therefore, we repeat similar case studies as was done for WEP. For Sumatra, we find in Case 21 \mgnote{no Case 21 in Table}, that the global strain rate exponent is 3.08, while 3.063 for when priors are imposed. When it comes to the activation energy, we find a value of $217.4 kJ/mol$ when we do not include prior knowledge, while 
-with prior knowledge we find a value of $224.9 kJ/mol$. Furthermore, the inferred yield stress ranges from 132.6 MPa to 141.7 MPa, values that are similar to what were obtained in WEP. While the Sumatra model is a different subuction zone than was was examined in WEP, we find that there is a similar value for the plate coupling for Sumatra.
  % The first case study is shown below in Fig.\ref{fig:inverse1}
 \begin{figure}[H]
 \centering
@@ -888,26 +968,12 @@ with prior knowledge we find a value of $224.9 kJ/mol$. Furthermore, the inferre
 %}
 \caption{(A) Plate boundary weakfactor iteration for Central America (blue lines), Sumatra (red lines), Tonga (black lines). \textit{Diamonds} \mgnote{Need to use Open Diamond} represent inversion with strain rate exponent held fixed\mgnote{Case ?}, while \textit{circles} represent yield stress held fixed (C) strain rate exponent iteration, \textit{dashed line} represents the fixed value of yield stress (D) yield stress iteration \textit{dashed line} represents the fixed value of the strain rate exponent.
 \mgnote{No cap for B? No dashed line in D.}}
-\label{fig:inverse1}
+\label{fig:model_convergence}
 \end{figure}
-\mgnote{What is the objective here? This \P~ is confusuing because there is all this discussion about Sumatra, but the WEP models are being referred to} We find in Case 5, that the inferred strain rate exponent is approximately 3.05, while the yield stress is approximately 143 MPa. The inferred plate coupling for Sumatra is larger than that of Ryukyu and Izu-Bonin in Cases 1-4, which seems to further suggest that mechanical coupling is independent of rheology. 
-
-
-
-
-
-
-
 
 
 
 \subsection{Uncertainty Quantification for Plate boundary stresses}
-
-An important part of our study is to quantify the uncertainty of the inferred rheological parameters by examining the posterior distributions, specifically the conditional distributions. The conditional distributions convey not only the uncertainty in each parameter, but the trade-offs and how they contribute to the underlying model physics. We compare the conditional distributions for the plate couplings vs. yield stress and strain rate exponent for Case 1  (Fig.\ref{fig:distrib}a,b) and find that there is a clear demarcation between the least coupled subduction zones (Ryukyu and Izu-Bonin) and South America. The partitioning of the subduction zones suggest that the South America plate boundary is more mechanically coupled compared to Ryukyu and Izu-Bonin regardless of the global parameter (yield stress and strain rate exponent). We find a similar partitioning for Cases 2-3 for the larger cross-section and shows that regardless of prior knowledge or addition of average effective viscosity data, there still is a preferential ordering of  plate coupling. 
-
-A consequence of these conditional distributions are the trade-offs between rheological parameters. We see a strong positive correlation between strain rate exponent and yield stress (Fig.~\ref{fig:distrib}c), a negative correlation between the plate couplings and yield stress (Fig.~\ref{fig:distrib}b) and a slight positive correlation between plate couplings and strain rate exponent (Fig.~\ref{fig:distrib}a). The positive correlation between the strain rate exponent and yield stress suggests that as the strain rate exponent increases, plate motions increase, resulting in an increase in yield stress in order to compensate for the increase in plate velocity. 
-Yield stress and strain-rate exponent both control the degree of nonlinearity of the system; nonlinearity is increased with larger $n$, so $\sigma_y$ must decrease in order to fit the kinematic constraints.
-Likewise, the increase in plate coupling which reduces plate velocity causes an increase in viscosity.  To compensate for this increase in viscosity, a decrease in yield stress is needed, which causes weakening in plates, thereby increasing plate motion. Similarly, as plate coupling increases (increase in viscosity in the fault zone), an increase in the strain rate exponent compensates for the decrease in plate motion.  
 
 \begin{figure}[H]
 \centering
@@ -947,39 +1013,12 @@ Likewise, the increase in plate coupling which reduces plate velocity causes an 
 
 %An important idea is to know if these trade-offs exist for all inversions, that is with more (or less) inferred parameters, would these correlations remain the same. We find that these trade-offs are consistent when we reduce the parameter space in Case 2, i.e. marginalizing out the upper mantle prefactor, that this there still exists a negative correlation between yield stress and plate coupling in Case 2, which suggests that these rheological parameters are correlated in this way due to the underlying physics with respect to plate motions. Furthermore, we find that there is a positive correlation between the strain rate exponent and yield stress, implying that an increase in strain rate exponent (weakening of the upper mantle) precipitates an increase in yield stress (reduction in plate motion) to make plates resistant to bending.    
 
-An open question about parameter trade-offs deals with additional data, more specifically the average effective viscosity in certain regions of the mantle. 
-It is not apparent if these trade-offs will exist with additional data due to the different effects each parameter on both plate motions and average effective viscosity, even though we find similar values for the \textbf{MAP} point between the Case  (without effective viscosity data) and Case 3 (with effective viscosity data). In Fig.\ref{fig:distrib}c we see that the overall distributions are similar in that the trade-offs are the same; however, with the reduction in the variance for the strain rate exponent, the conditional distribution for the strain rate exponent and yield stress, when using average effective viscosity data, is smaller. The additional effective viscosity data acts as prior information marginally reduce the uncertainty on the inferred parameters \mgnote{Is the reduction in the varinces for $\sigma_y$ and $n$ the same?}. 
-\mgnote{I think significantly, the slope of the yield stress vs. n increases when the viscosity data is included. Why is this the case? As I asked in the prior section, is the viscosity value that you constrain the system with, larger or smaller than the effective viscosity in the same region without such a constraint. Can you say, that the importance of the yield stress increases when you have added this additional constraint?}
-
-Using prior knowledge can further reduce the variance for the inferred rheological parameters. Using prior knowledge from laboratory experiments \citep{korenaga2008new}, we are able to reduce the variance of the plate couplings and global parameters in Case 4 as shown in Fig.\ref{fig:distrib}c, while retaining the same trade-offs between each rheological parameters, which is expected as we only reduced the acceptable range of the inferred parameters. While the conditional distributions for the larger cross-section show that there is indeed trade-offs in plate couplings and global parameters, is is unknown if these trade-offs exist for all subduction zones. To this end, we compared the conditional distributions for Sumatra, Tonga and Central America (Fig.\ref{fig:distrib}d,e and f). 
-
 
 In Fig.\ref{fig:distrib}d-e, we find similar trade-offs between the plate coupling and strain rate exponent, that is an increase in plate coupling (an increase in viscosity within the fault zone) would lead to an increase in the strain rate exponent (by promoting more shear thinning) so as to increase plate motion. Similarly, as the plate coupling increases, the yield stress decreases (by promoting more dynamic weakening) so that plates can overcome the resistance from an increase in plate coupling. Furthermore, the same trade-off (positive correlation) between the strain rate exponent and yield stress is found for the Sumatra, Tonga and Central America (Fig.\ref{fig:distrib}f). 
 
 \mgnote{Let's Discuss. Is there a conditional distribution that goes along with this (or these) inversions? Case numbers's?}
 We can visually see these trade-offs in the conditional distributions from the effective viscosity in Fig.\ref{fig:visc_smaller} for Sumatra and Central America. We see that there is sufficient \mgnote{Sufficient for what?}strain rate weakening in the upper mantle for each model for both Sumatra and Central America, however, the amount of yielding from dynamic weakening changes in the hinge zone and overriding plate between Sumatra and Central America. \mgnote{Explain more in the proceeding sentance. I think what your saying might be important.}We find in Fig.\ref{fig:visc_smaller} that there is a larger plate coupling for Sumatra relative to Central America, which  yields more dynamic weakening in the overriding plate (more strain). When comparing the effective viscosity of the slabs for Sumatra and Central America, we find that the final viscosity structure suggests that the Central America slab is stronger due to less dynamic weakening and more decoupling between the overriding and subducting plate. \mgnote{Link these arguments to differences in the conditional for these two models}
 
-
-
-\begin{figure}[H]
-\centering
-
-\hspace{-1.0cm}\subfigure{
-\includegraphics[scale =0.5]{contour_theory.pdf}%{mesh.pdf}
-}
-
-\hspace{0.2cm}\subfigure{
-\includegraphics[scale=0.5]{contour_theory2.pdf}%{mesh.pdf}
-}
-%\hspace{-0.2cm}\subfigure[]{
-%\includegraphics[height=35mm,width=58mm]{um_chap4.pdf}%{mesh.pdf}
-%}
-\caption{\mgnote{Case numbers's? Are these different iterations for a single inversion} Effective viscosity for a forward model for Middle America (A) Coupled ($\Gamma = 4.0 \cdot 10^{-3}$, $\sigma_y = 160$ MPa, and $n = 3.08$) (B) Zoom in of Middle America and increase in strain rate exponent (C) ($\Gamma = 1.0 \cdot 10^{-5}$, $\sigma_y = 160$ MPa, $n = 3.08$)
-(B) Zoom in of Central America subduction zone. \mgnote{You need to consistenly use Middle versus Central America.}}
-\label{fig:middle_physics}
-\end{figure}
-
-\mgnote{Are these different iterations or different Case numbers's?}To further elucidate these trade-offs, we consider a \mgnote{This is not a thought experiment } thought-experiment where we consider two forward models of Middle America in (Fig.\ref{fig:middle_physics}a). In this example, we consider a coupled Central America subduction zone in Fig.\ref{fig:middle_physics}a, and see  that for a larger coupling the slab would then slow down and the amount of weakening around the slab decreases, resulting in an increase in viscosity around the slab. However, when the coupling is decreased ($\Gamma=4\cdot 10^{-5}$), the amount of strain strain rate weakening increases as does the velocity of the plate. This interplay between the rheological parameters is important as it demonstrates a strong interaction between the global rheological parameters (yield stress and strain rate exponent) and local coupling parameter.
 
 
 
@@ -1002,8 +1041,6 @@ We can visually see these trade-offs in the conditional distributions from the e
 \label{fig:activ_distrib}
 \end{figure}
 
-
-One of the key analyses that was developed in this chapter was the characterization of the uncertainty of the stresses (shear and normal) of each plate boundary that is built upon a Gaussian approximation around the \textbf{MAP} point for each inversion. We apply this approach to our models \mgnote{Case numbers}as shown in Fig.\ref{fig:shear_smaller}a,b, where we compare the mean normal and shear stresses of each plate boundary and find that there is a similar pattern of the partitioning between the least coupled subduction zones of Ryukyu and Izu-Bonin to the more coupled subduction zone of South America. Similar to Fig.\ref{fig:distrib}, the same pattern of a more coupled South America plate boundary appears (both normal and shear stresses), regardless of the global parameter. However, we note that the mean of the computed normal stress is lower than the shear stresses, which is certainly not expected.
 
 
 
@@ -1045,8 +1082,6 @@ One of the key analyses that was developed in this chapter was the characterizat
 \label{fig:shear_smaller}
 \end{figure}
 
-
-We similarly compared the stress conditional distributions for Sumatra and Tonga in Fig.\ref{fig:shear_smaller}c,d and find that the shear average shear stress in the fault zones are larger than the normal stress. Similar to South America, we find that there is a partitioning of subudction zones for both shear and normal stresses, where Sumatra is more coupled than Tonga.
 
 
 \begin{figure}[H]
