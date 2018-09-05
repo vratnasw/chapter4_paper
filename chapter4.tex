@@ -613,9 +613,7 @@ and with a coefficient $\Gamma_i$ that was recovered in ~\eqref{eq:rheo}, $d_0$ 
  
 While we are able to solve this nonlinear Stokes flow, we need to resolve the thermal boundary layers and fault zones which requires either using small elements with uniform refinement, which would be computationally expensive, or adaptive mesh refinement (AMR), which is algorithmically more complicated. 
 Here, we use AMR and refine the mesh in areas such as oceanic plates, slabs, the mantle wedge, and fault zones (the later with 2 km elements). AMR is implemented with the \textit{p4est} library \citep{burstedde2011p4est}, which ensures a 2 to 1 ordering for adjacent elements. Furthermore, we use quadratic elements for velocity along with first order discontinuous elements for pressure to ensure mass conservation.
- 
- Resolving the fine scale structures of the thermal boundary layers and fault zones is part of the process of solving the nonlinear Stokes equations; however, to accurately solve the Stokes system, we need to either use Picard or Newton's method, (both being iterative methods) obtain accurate flow velocities and the effective viscosity structure. While employing Picard is simpler in implementation, it falls short in a sufficient reduction of the residual of the Stokes system compared to Newton's method. Furthermore, the convergence obtained by Newton's method is significantly faster than what is obtained by Picard and results in a larger reduction of the residual of the Stokes system \citep{rudi2015extreme}. In addition to a significant reduction of the nonlinear residual of the Stokes system, solving the Stokes flow problem by an inexact Newton-krylov method which requires linearizing the nonlinear Stokes equation (providing the adjoint equation), and thus solving the linearized Stokes system, we employ iterative Krylov (GMRES) solver while using multigrid methods (both algebraic and geometric), that are based on MATVEC methods which computes the action of a matrix on a vector, thus reducing the computational time of a forward solve. Furthermore, the solver employs a Schur-complement approximation that is based on a hybrid-spectral-geometric-algebraic multigrid approach detailed in \citep{rudi2015extreme}, which has a sequence of spectral coarsening of polynomial order, followed by geometric and algebraic multigrid. 
- 
+  Resolving the fine scale structures of the thermal boundary layers and fault zones is part of the process of solving the nonlinear Stokes equations; however, to accurately solve the Stokes system, we need to either use Picard or Newton's method, (both being iterative methods) obtain accurate flow velocities and the effective viscosity structure. While employing Picard is simpler in implementation, it falls short in a sufficient reduction of the residual of the Stokes system compared to Newton's method. Furthermore, the convergence obtained by Newton's method is significantly faster than what is obtained by Picard and results in a larger reduction of the residual of the Stokes system \citep{rudi2015extreme}. In addition to a significant reduction of the nonlinear residual of the Stokes system, solving the Stokes flow problem by an inexact Newton-krylov method which requires linearizing the nonlinear Stokes equation (providing the adjoint equation), and thus solving the linearized Stokes system, we employ iterative Krylov (GMRES) solver while using multigrid methods (both algebraic and geometric), that are based on MATVEC methods which computes the action of a matrix on a vector, thus reducing the computational time of a forward solve. Furthermore, the solver employs a Schur-complement approximation that is based on a hybrid-spectral-geometric-algebraic multigrid approach detailed in \citep{rudi2015extreme}, which has a sequence of spectral coarsening of polynomial order, followed by geometric and algebraic multigrid. 
 
 \mgnote{More description on the solver used and references is still needed}
 
@@ -846,7 +844,7 @@ While we see that the average viscosity of the upper mantle is similar between t
 \subsection{Inference of fault zone stresses}
 
 The stress on faults is a fundamental quantity in arguments on the origin of variation in megthrust behavior along strike and between subduction zones.
-Fault zone stress is an extrinsic quantity and is not in our set of unknown model parameters, $\bold{m}$.
+Fault zone stress is an extrinsic quantity and is not in our set of unknown model parameters, $\mathbf{m}$.
 Stress is a function of both model parameters and forces and an additional adjoint solve allows the inference of the optimal shear and normal stress within the plate bounaries and the covariance with $\bold{m}$.
 
 Using optimizations in which all of the rheological parameters are left free and with no prior knowledge or inclusion of viscosity data (Case 6 for WEP and Cases 6, 16 and 25 for Sumatra, Tonga and Middle America, respectively)
@@ -984,30 +982,7 @@ To address the activation energy value that was inferred in Case 16, we now fix 
 %\end{figure}
 
  % The first case study is shown below in Fig.\ref{fig:inverse1}
-\begin{figure}[H]
-\centering
-%\hspace{-0.2cm}\subfigure[]{
-%\includegraphics[height=65mm,width=128mm]{visc_no_stress.jpg}%{mesh.pdf}
-%}
-\hspace{-0.4cm}\subfigure{
-\includegraphics[height=35mm,width=58mm]{fig4a.pdf}%{mesh.pdf}
-}
-\hspace{-0.1cm}\subfigure{
-\includegraphics[height=35mm,width=58mm]{fig4b.pdf}%{mesh.pdf}
-}
-\hspace{-0.2cm}\subfigure{
-\includegraphics[height=35mm,width=58mm]{fig4c.pdf}%{mesh.pdf}
-}
-\hspace{-0.2cm}\subfigure{
-\includegraphics[height=35mm,width=58mm]{fig4d.pdf}%{mesh.pdf}
-}
-%\hspace{-0.2cm}\subfigure[]{
-%\includegraphics[height=35mm,width=58mm]{um_chap4.pdf}%{mesh.pdf}
-%}
-\caption{(A) \mgnote{Move to Supplementary Figure}Plate boundary weakfactor iteration for Central America (blue lines), Sumatra (red lines), Tonga (black lines). \textit{Diamonds} \mgnote{Need to use Open Diamond} represent inversion with strain rate exponent held fixed\mgnote{Case ?}, while \textit{circles} represent yield stress held fixed (C) strain rate exponent iteration, \textit{dashed line} represents the fixed value of yield stress (D) yield stress iteration \textit{dashed line} represents the fixed value of the strain rate exponent.
-\mgnote{No cap for B? No dashed line in D.}}
-\label{fig:model_convergence}
-\end{figure}
+
 
 
 
@@ -1156,6 +1131,20 @@ Here, we have purely viscous flow, Couette flow in a low viscosity  channel, adj
 
 
 \appendix
+\section{Supplementary Figures}
+\begin{figure}[H]
+\centering
+
+\includegraphics[scale = 0.35]{supp.pdf}%{mesh.pdf}
+
+%\hspace{-0.2cm}\subfigure[]{
+%\includegraphics[height=35mm,width=58mm]{um_chap4.pdf}%{mesh.pdf}
+%}
+\caption{(A) Convergence for the plate couplings in Case 7 for WEP (b) convergence for the strain rate exponent  (c) convergence for the yield stress (Case 7 for WEP, Case 20 for Sumatra, Case 37 for Middle America and Case 28 for Tonga).}
+\label{fig:model_convergence}
+\end{figure}
+
+
 \section{Derived Covariance Estimates}
 We have previously set models in how to estimate quantities that are are inferred such as the stresses. In this section, we will thoroughly discuss how to apply this Gaussian approximation to various quantities of interest. Mapping of covariance matrices from one space to another requires  a transformation,i.e. using the Jacobian. As an example, we will look at transforming a Gaussian distribution for the inferred yield stress and strain rate exponent, that is $\ppi(\mm):= \mathcal{N}([n,\ssigma_y],\mathcal C) \rightarrow \ssigma(\gamma \mm)$, where we look at the scaled space between the parameters. To determine the mapping of the covariance we make use of,
 \underline{Case 1: 1D Normal}
