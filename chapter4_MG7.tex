@@ -897,37 +897,40 @@ these three subduction zones, when yielding is made a single global paramter, th
 
 %The resolution of these forces has been computed (Table~\ref{table:force_balance}).
  
-%\begin{table}[H]
-%		\caption{Force Distribution} % title of Table
-%		\centering  % used for centering table
-%         \scalebox{0.5}{
-%		\begin{tabular}{ c c c c c c c c } % centered columns (2 columns)
-%		\hline \hline                        %inserts double horizontal lines
-%		 Subduction Zone &  $\text{Drag Force} (10^{12}N/m)$ &  $\text{Slab Pull Force} (10^{12}N/m)$ &  $\text{Slab Shear Force} (10^{12}N/m)$ &  $\text{Bending Force} (10^{12}N/m)$ &  $\text{Fault Shear Force} (10^{12}N/m)$   \\ [0.5ex] % inserts table
+\begin{table}[H]
+		\caption{Force Distribution} % title of Table
+		\centering  % used for centering table
+         \scalebox{0.5}{
+		\begin{tabular}{ c c c c c c c c c } % centered columns (2 columns)
+		\hline \hline                        %inserts double horizontal lines
+		Case & Subduction Zone &  $\text{Drag Force} (10^{12}N/m)$ &  $\text{Slab Pull Force} (10^{12}N/m)$ &  $\text{Slab Shear Force} (10^{12}N/m)$ &  $\text{Bending Force} (10^{12}N/m)$ &  $\text{Fault Shear Force} (10^{12}N/m)$ & State of Stress   \\ [0.5ex] % inserts table
 		%heading
-%		\hline                  % inserts single horizontal line
-%           15 & Sumatra & $1.17$ & $7.37$ & $1.71$ & $3.14$ & $1.4$  \\
-%        16 & Sumatra&  $1.25$ & $7.37$ & $1.73$ & $3.01$ & $1.4$\\
-%        17 & Sumatra&  $1.21$ & $7.37$ & $1.81$ & $2.98$ & $1.5$\\ 
-%       18 & Sumatra& $1.37$ & $7.37$ & $1.64$ & $2.99$ & $1.4$ \\
-%        19 & Sumatra& $1.39$ & $7.37$ & $1.49$ & $3.12$ & $1.5$  \\
-%       20 &  Sumatra&  $1.42$ & $7.37$ & $1.67$ & $3.02$ & $1.4$   \\
-%      21 &  Sumatra & $1.17$ & $7.37$ & $1.54$ & $3.01$ & $1.5$  \\
-%       22 & Sumatra&  $1.31$ & $7.37$ & $1.71$ & $3.15$ & $1.5$ \\
-%     23 &  Sumatra&  $1.42$ & $7.37$ & $1.63$ & $3.02$ & $1.6$\\   
-%       32 & Central America  & $1.77$ & $8.47$ & $2.14$ & $2.55$ & $1.26$\\               
-%          33 &  Central America  &  $1.77$ & $8.47$ & $2.08$ & $2.57$ & $1.21$\\       
-%        34 &    Central America   & $1.79$ & $8.47$ & $2.16$ & $2.55$ & $1.15$  \\      
-%         35 &   Central America   & $1.79$ & $8.47$ & $2.16$ & $2.49$ & $1.15$  \\      
-%         36 &   Central America  &  $1.71$ & $8.47$ & $2.24$ & $2.51$ & $1.23$  \\     
-%         37 &   Central America  & $1.73$ & $8.47$ & $2.17$ & $2.57$ & $1.27$\\                          
-%          38 &  Central America   & $1.795$ & $8.47$ & $2.26$ & $2.45$ & $1.19$\\              
-%        39 &  Central America   & $1.71$ & $8.47$ & $2.21$ & $2.48$ & $1.29$\\            
-%                \hline %inserts single line
-%		\end{tabular}
-%        }
-%		\label{table:force_balance} % is used to refer this table in the text
-%\end{table}
+		\hline                  % inserts single horizontal line
+           15 & Sumatra & $1.17$ & $7.37$ & $1.71$ & $3.14$ & $1.4$ & C \\
+        16 & Sumatra&  $1.25$ & $7.37$ & $1.73$ & $3.01$ & $1.4$ & C\\
+        17 & Sumatra&  $1.21$ & $7.37$ & $1.81$ & $2.98$ & $1.5$ & C\\ 
+       18 & Sumatra& $1.37$ & $7.37$ & $1.64$ & $2.99$ & $1.4$ \\
+        19 & Sumatra& $1.39$ & $7.37$ & $1.49$ & $3.12$ & $1.5$  \\
+       20 &  Sumatra&  $1.42$ & $7.37$ & $1.67$ & $3.02$ & $1.4$ & C  \\
+      21 &  Sumatra & $1.17$ & $7.37$ & $1.54$ & $3.01$ & $1.5$ & C  \\
+       22 & Sumatra&  $1.31$ & $7.37$ & $1.71$ & $3.15$ & $1.5$ \\
+     23 &  Sumatra&  $1.42$ & $7.37$ & $1.63$ & $3.02$ & $1.6$\\   
+     24 & Tonga& N/A & N/A & N/A & N/A & N/A & T \\
+          25 & Tonga& N/A & N/A & N/A & N/A & N/A & T \\
+           28 & Tonga& N/A & N/A & N/A & N/A & N/A & T \\
+       32 & Central America  & $1.77$ & $8.47$ & $2.14$ & $2.55$ & $1.26$\\               
+          33 &  Central America  &  $1.77$ & $8.47$ & $2.08$ & $2.57$ & $1.21$\\       
+        34 &    Central America   & $1.79$ & $8.47$ & $2.16$ & $2.55$ & $1.15$  \\      
+         35 &   Central America   & $1.79$ & $8.47$ & $2.16$ & $2.49$ & $1.15$  \\      
+         36 &   Central America  &  $1.71$ & $8.47$ & $2.24$ & $2.51$ & $1.23$ &T \\     
+         37 &   Central America  & $1.73$ & $8.47$ & $2.17$ & $2.57$ & $1.27$ & T\\                       
+          38 &  Central America   & $1.795$ & $8.47$ & $2.26$ & $2.45$ & $1.19$ &T\\              
+  %      39 &  Central America   & $1.71$ & $8.47$ & $2.21$ & $2.48$ & $1.29$\\            
+   	\hline %inserts single line
+		\end{tabular}
+        }
+		\label{table:force_balance} % is used to refer this table in the text
+\end{table}
 
 
 %\subsection{additional material}
